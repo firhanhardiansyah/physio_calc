@@ -1,0 +1,2 @@
+Tentang Aplikasi
+Physiotherapy calculator adalah aplikasi pengukuran fisioterapi yang akan membantu fisioterapis dalam melakukan pemeriksaan pada pasien serta bertujuan untuk meningkatakan akurasi diagnosis fisioterapi
