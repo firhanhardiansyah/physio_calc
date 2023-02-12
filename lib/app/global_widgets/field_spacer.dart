@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class FieldSpacer extends StatelessWidget {
-  const FieldSpacer({super.key});
+  const FieldSpacer({super.key, this.height = 20});
+
+  final double height;
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(height: 20.0,);
+    return SizedBox(height: height);
   }
 }
