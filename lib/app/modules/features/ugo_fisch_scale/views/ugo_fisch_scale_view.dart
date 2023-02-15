@@ -5,8 +5,9 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/values/strings.dart';
-import 'package:physio_calc/app/globa_widgets/appbar_custom.dart';
-import 'package:physio_calc/app/globa_widgets/field_spacer.dart';
+import 'package:physio_calc/app/global_screens/user_form_screen.dart';
+import 'package:physio_calc/app/global_widgets/appbar_custom.dart';
+import 'package:physio_calc/app/global_widgets/field_spacer.dart';
 
 import '../controllers/ugo_fisch_scale_controller.dart';
 
@@ -15,39 +16,73 @@ class UgoFischScaleView extends GetView<UgoFischScaleController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(58),
-          child: AppBarCustom(
-            title: controller.appBarTitle,
-            onSave: () {
-              controller.onSavePdf();
-            },
-            onReset: () {
-              controller.onReset();
-            },
-            onInfo: () {
-              Get.dialog(AlertDialog(
-                title: const Text('Info'),
-                content: RichText(
-                    text: TextSpan(
-                        style: const TextStyle(color: Colors.black),
-                        children: [
-                      const TextSpan(text: infoUgoFischScale),
-                      const TextSpan(text: '\n\n'),
-                      TextSpan(
-                          text: infoUgoFischScaleRef,
-                          style: TextsTheme.textXxs),
-                    ])),
-              ));
-            },
-          ),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(58),
+        child: AppBarCustom(
+          title: controller.appBarTitle,
+          onSave: () {
+            if (controller.formKey.currentState?.isValid == false) {
+              Get.dialog(
+                AlertDialog(
+                  title: const Text('Info'),
+                  content: RichText(
+                    text: const TextSpan(
+                      style: TextStyle(color: Colors.black),
+                      children: [
+                        TextSpan(
+                            text: 'Harap lengkapi formulir terlebih dahulu!'),
+                      ],
+                    ),
+                  ),
+                  actions: [
+                    ElevatedButton(
+                      onPressed: Get.back,
+                      child: const Text('Ok'),
+                    )
+                  ],
+                ),
+              );
+              return;
+            }
+
+            Get.dialog(AlertDialog(
+              title: Text(
+                'User Information',
+                style: TextsTheme.textLg,
+              ),
+              content: UserFormScreen(callback: controller.onSavePdf),
+            ));
+          },
+          onReset: () {
+            controller.onReset();
+          },
+          onInfo: () {
+            Get.dialog(AlertDialog(
+              title: const Text('Info'),
+              content: RichText(
+                text: TextSpan(
+                  style: const TextStyle(color: Colors.black),
+                  children: [
+                    const TextSpan(text: infoUgoFischScale),
+                    const TextSpan(text: '\n\n'),
+                    TextSpan(
+                      text: infoUgoFischScaleRef,
+                      style: TextsTheme.textXxs,
+                    ),
+                  ],
+                ),
+              ),
+            ));
+          },
         ),
-        body: Obx(() => FormBuilder(
-            key: controller.formKey,
-            autovalidateMode: controller.autoValidate,
-            child: ListView(
-              shrinkWrap: true,
-              padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
+      ),
+      body: Obx(
+        () => FormBuilder(
+          key: controller.formKey,
+          autovalidateMode: controller.autoValidate,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: Column(
               children: [
                 ListView.builder(
                   shrinkWrap: true,
@@ -67,8 +102,8 @@ class UgoFischScaleView extends GetView<UgoFischScaleController> {
                                 name: listField.name,
                                 decoration:
                                     InputDecoration(labelText: listField.label),
-                                onChanged: (value) =>
-                                    controller.onChangeField(value, listField, index),
+                                onChanged: (value) => controller.onChangeField(
+                                    value, listField, index),
                                 validator: FormBuilderValidators.compose([
                                   FormBuilderValidators.required(
                                       errorText: 'Harap dipilih salah satu')
@@ -120,10 +155,17 @@ class UgoFischScaleView extends GetView<UgoFischScaleController> {
                   },
                 ),
                 ElevatedButton(
-                    onPressed: controller.onSubmit,
-                    child: const Text('Result')),
-                const FieldSpacer()
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(42.0),
+                  ),
+                  onPressed: controller.onSubmit,
+                  child: const Text('Result'),
+                ),
               ],
-            ))));
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
 
 class UserIdentityController extends GetxController {
-  //TODO: Implement UserIdentityController
+  String get errorText => 'Tidak boleh kosong.';
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +17,4 @@ class UserIdentityController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

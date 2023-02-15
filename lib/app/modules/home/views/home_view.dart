@@ -25,20 +25,23 @@ class HomeView extends GetView<HomeController> {
           ],
         ),
         body: ListView.builder(
+          padding: const EdgeInsets.all(16),
           itemCount: controller.features.length,
           itemBuilder: (context, index) {
             FeatureModel feature = controller.features[index];
             return Padding(
                 padding: EdgeInsets.symmetric(
-                    vertical: feature.id == 10 ? 8.0 : 2.0, horizontal: 16.0),
+                  vertical: feature.id == 10 ? 8.0 : 2.0,
+                ),
                 child: ElevatedButton(
                   onPressed: feature.actived
                       ? () => controller.goToPage(feature)
                       : null,
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(
-                        vertical: 8.0,
-                        horizontal: feature.id == 10 ? 24.0 : 16.0),
+                      vertical: 8.0,
+                      horizontal: feature.id == 10 ? 24.0 : 16.0,
+                    ),
                   ),
                   child: Text(
                     feature.name,
