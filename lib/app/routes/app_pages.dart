@@ -6,8 +6,6 @@ import '../modules/features/ugo_fisch_scale/bindings/ugo_fisch_scale_binding.dar
 import '../modules/features/ugo_fisch_scale/views/ugo_fisch_scale_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/user_identity/bindings/user_identity_binding.dart';
-import '../modules/user_identity/views/user_identity_view.dart';
 
 // ignore_for_file: constant_identifier_names
 
@@ -23,11 +21,6 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
-    ),
-    GetPage(
-      name: _Paths.USER_IDENTITY,
-      page: () => const UserIdentityView(),
-      binding: UserIdentityBinding(),
     ),
     GetPage(
       name: _Paths.UGO_FISCH_SCALE,

@@ -11,27 +11,67 @@ class HomeController extends GetxController {
     super.onInit();
 
     features.addAll([
-      FeatureModel(id: 1, name: barthelIndex, route: Routes.BARTHEL_INDEX, actived: true),
-      FeatureModel(id: 2, name: bbs, route: '', actived: false),
-      FeatureModel(id: 3, name: gcs, route: '', actived: false),
-      FeatureModel(id: 4, name: mmse, route: '', actived: false),
-      FeatureModel(id: 5, name: nmq, route: '', actived: false),
-      FeatureModel(id: 6, name: odi, route: '', actived: false),
-      FeatureModel(id: 7, name: pcs, route: '', actived: false),
-      FeatureModel(id: 8, name: ugoFischScale, route: Routes.UGO_FISCH_SCALE, actived: true),
-      FeatureModel(id: 9, name: uefs, route: '', actived: false),
-      FeatureModel(id: 10, name: womac, route: '', actived: false),
+      FeatureModel(
+        id: 1,
+        name: ugoFischScale,
+        route: Routes.UGO_FISCH_SCALE,
+        actived: true,
+      ),
+      FeatureModel(
+        id: 2,
+        name: barthelIndex,
+        route: Routes.BARTHEL_INDEX,
+        actived: true,
+      ),
+      FeatureModel(
+        id: 3,
+        name: bbs,
+        route: '',
+        actived: false,
+      ),
+      FeatureModel(
+        id: 4,
+        name: gcs,
+        route: '',
+        actived: false,
+      ),
+      FeatureModel(
+        id: 5,
+        name: mmse,
+        route: '',
+        actived: false,
+      ),
+      FeatureModel(
+        id: 6,
+        name: nmq,
+        route: '',
+        actived: false,
+      ),
+      FeatureModel(
+        id: 7,
+        name: odi,
+        route: '',
+        actived: false,
+      ),
+      FeatureModel(
+        id: 8,
+        name: pcs,
+        route: '',
+        actived: false,
+      ),
+      FeatureModel(
+        id: 9,
+        name: uefs,
+        route: '',
+        actived: false,
+      ),
+      FeatureModel(
+        id: 10,
+        name: womac,
+        route: '',
+        actived: false,
+      ),
     ]);
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
   }
 
   void goToPage(FeatureModel feature) {

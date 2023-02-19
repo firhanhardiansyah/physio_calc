@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -17,7 +16,6 @@ import 'package:pdf/widgets.dart' as pw;
 class UgoFischScaleController extends GetxController {
   final formKey = GlobalKey<FormBuilderState>();
 
-  final _validateMode = false.obs;
   final _appBarTitle = ''.obs;
 
   String saveTestingV = 'default cuy';
@@ -26,11 +24,7 @@ class UgoFischScaleController extends GetxController {
 
   String get appBarTitle => _appBarTitle.value;
 
-  AutovalidateMode get autoValidate {
-    return _validateMode.value == true
-        ? AutovalidateMode.onUserInteraction
-        : AutovalidateMode.disabled;
-  }
+  AutovalidateMode autoValidate = AutovalidateMode.disabled;
 
   Map<String, FormBuilderFieldState> get _fields =>
       formKey.currentState!.fields;
@@ -65,16 +59,6 @@ class UgoFischScaleController extends GetxController {
           label: 'Whistling (Bersiul)',
           pointName: 'whistling_point'),
     ];
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
   }
 
   void onChangeField(String? value, UgoFischScaleFieldModel field, int index) {
@@ -119,15 +103,23 @@ class UgoFischScaleController extends GetxController {
             ])),
         actions: [ElevatedButton(onPressed: Get.back, child: const Text('Ok'))],
       ));
-    } else {
-      debugPrint(formKey.currentState?.value.toString());
-      debugPrint('validation failed');
+      return;
     }
+
+    autoValidate = AutovalidateMode.onUserInteraction;
+    update();
+  }
+
+  void onReset() {
+    formKey.currentState!.reset();
+    autoValidate = AutovalidateMode.disabled;
+    update();
   }
 
   /// Save PDF
-  void onSavePdf(GlobalKey<FormBuilderState> formKey) async {
-    final Map<String, dynamic>? userInformation = formKey.currentState?.value;
+  void onSavePdf(GlobalKey<FormBuilderState> userInformationFormKey) async {
+    final Map<String, dynamic>? userInformation =
+        userInformationFormKey.currentState?.value;
     final pdf = pw.Document();
 
     _finalResult();
@@ -338,11 +330,6 @@ class UgoFischScaleController extends GetxController {
           .buffer
           .asUint8List(),
     );
-  }
-
-  void onReset() {
-    _validateMode(false);
-    formKey.currentState!.reset();
   }
 
   // Formula

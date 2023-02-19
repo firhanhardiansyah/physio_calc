@@ -76,10 +76,10 @@ class UgoFischScaleView extends GetView<UgoFischScaleController> {
           },
         ),
       ),
-      body: Obx(
-        () => FormBuilder(
+      body: GetBuilder(
+        init: controller,
+        builder: (controller) => FormBuilder(
           key: controller.formKey,
-          autovalidateMode: controller.autoValidate,
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -95,6 +95,7 @@ class UgoFischScaleView extends GetView<UgoFischScaleController> {
                       children: [
                         Flex(
                           direction: Axis.horizontal,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Flexible(
                               flex: 3,
@@ -104,10 +105,6 @@ class UgoFischScaleView extends GetView<UgoFischScaleController> {
                                     InputDecoration(labelText: listField.label),
                                 onChanged: (value) => controller.onChangeField(
                                     value, listField, index),
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.required(
-                                      errorText: 'Harap dipilih salah satu')
-                                ]),
                                 options: ['0%', '30%', '70%', '100%']
                                     .map((val) => FormBuilderFieldOption(
                                           value: val,
@@ -121,6 +118,11 @@ class UgoFischScaleView extends GetView<UgoFischScaleController> {
                                   final result = int.parse(splitted[0]);
                                   return result;
                                 },
+                                autovalidateMode: controller.autoValidate,
+                                validator: FormBuilderValidators.compose([
+                                  FormBuilderValidators.required(
+                                      errorText: 'Harap dipilih salah satu')
+                                ]),
                               ),
                             ),
                             const SizedBox(

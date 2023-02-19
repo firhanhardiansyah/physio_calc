@@ -6,7 +6,6 @@ part of 'app_pages.dart';
 abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
-  static const USER_IDENTITY = _Paths.USER_IDENTITY;
   static const UGO_FISCH_SCALE = _Paths.UGO_FISCH_SCALE;
   static const BARTHEL_INDEX = _Paths.BARTHEL_INDEX;
 }
@@ -14,7 +13,6 @@ abstract class Routes {
 abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
-  static const USER_IDENTITY = '/user-identity';
   static const UGO_FISCH_SCALE = '/ugo-fisch-scale';
   static const BARTHEL_INDEX = '/barthel-index';
 }

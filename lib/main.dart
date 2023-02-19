@@ -39,7 +39,6 @@ class MyApp extends StatelessWidget {
           Locale('en'),
         ],
         localizationsDelegates: const [
-          // These are default localization delegates that implement the very basic translations for standard controls and date/time formats.
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
