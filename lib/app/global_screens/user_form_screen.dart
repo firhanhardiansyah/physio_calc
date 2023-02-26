@@ -40,7 +40,7 @@ class UserFormScreen extends StatelessWidget {
                   FormBuilderValidators.required(errorText: errorText),
                 ]),
                 textInputAction: TextInputAction.next,
-                initialValue: 'John Doe',
+                initialValue: 'User Testing',
               ),
               const FieldSpacer(),
               FormBuilderTextField(

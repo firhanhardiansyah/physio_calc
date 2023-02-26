@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
-import 'package:open_file/open_file.dart';
+import 'package:open_file_plus/open_file_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/values/strings.dart';
@@ -394,8 +394,9 @@ class BarthelIndexController extends GetxController {
 
           return pw.Stack(
             children: [
-              pw.Align(
-                alignment: pw.Alignment.topRight,
+              pw.Positioned(
+                top: 16.0,
+                right: 42.0,
                 child: pw.Image(
                   pw.MemoryImage(headerImage),
                   width: 120.0,
@@ -465,12 +466,7 @@ class BarthelIndexController extends GetxController {
                             pw.Container(),
                           ]),
                         ]),
-                    pw.SizedBox(height: 28.0),
-                    pw.Text(
-                      'RESULT',
-                      style: pw.TextStyle(fontSize: TextsTheme.sizeTextBase),
-                    ),
-                    pw.SizedBox(height: 8.0),
+                    pw.SizedBox(height: 20.0),
                     pw.Table(
                         border: pw.TableBorder.all(),
                         columnWidths: const {
@@ -496,6 +492,7 @@ class BarthelIndexController extends GetxController {
 
     await file.writeAsBytes(bytes);
     await OpenFile.open(file.path);
+    Get.back();
   }
 
   void _finalResult() {

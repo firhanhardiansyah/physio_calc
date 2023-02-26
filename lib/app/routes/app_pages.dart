@@ -2,6 +2,10 @@ import 'package:get/get.dart';
 
 import '../modules/features/barthel_index/bindings/barthel_index_binding.dart';
 import '../modules/features/barthel_index/views/barthel_index_view.dart';
+import '../modules/features/bbs/bindings/bbs_binding.dart';
+import '../modules/features/bbs/views/bbs_view.dart';
+import '../modules/features/gcs/bindings/gcs_binding.dart';
+import '../modules/features/gcs/views/gcs_view.dart';
 import '../modules/features/ugo_fisch_scale/bindings/ugo_fisch_scale_binding.dart';
 import '../modules/features/ugo_fisch_scale/views/ugo_fisch_scale_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -31,6 +35,16 @@ class AppPages {
       name: _Paths.BARTHEL_INDEX,
       page: () => const BarthelIndexView(),
       binding: BarthelIndexBinding(),
+    ),
+    GetPage(
+      name: _Paths.BBS,
+      page: () => const BbsView(),
+      binding: BbsBinding(),
+    ),
+    GetPage(
+      name: _Paths.GCS,
+      page: () => const GcsView(),
+      binding: GcsBinding(),
     ),
   ];
 }

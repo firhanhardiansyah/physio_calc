@@ -53,3 +53,13 @@ flutter build apk --flavor dev -t lib/main.dart
 ```
 flutter build appbundle --flavor dev -t lib/main.dart
 ```
+
+- Sample Create Features 
+```
+get create page:<feature_name> on modules/features
+```
+
+- Build Runner
+```
+flutter pub run build_runner build --delete-conflicting-outputs
+```

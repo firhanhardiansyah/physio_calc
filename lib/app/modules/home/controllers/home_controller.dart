@@ -26,14 +26,14 @@ class HomeController extends GetxController {
       FeatureModel(
         id: 3,
         name: bbs,
-        route: '',
-        actived: false,
+        route: Routes.BBS,
+        actived: true,
       ),
       FeatureModel(
         id: 4,
         name: gcs,
-        route: '',
-        actived: false,
+        route: Routes.GCS,
+        actived: true,
       ),
       FeatureModel(
         id: 5,

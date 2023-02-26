@@ -1,126 +1,60 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
+import 'package:physio_calc/app/core/themes/texts_theme.dart';
+import 'package:physio_calc/app/core/values/questions/gcs_question.dart';
+import 'package:physio_calc/app/core/values/strings.dart';
+import 'package:physio_calc/app/data/models/form_field_model/form_field_model.dart';
+
+import 'package:flutter/services.dart';
+
 import 'package:open_file_plus/open_file_plus.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:physio_calc/app/core/themes/texts_theme.dart';
-import 'package:physio_calc/app/core/values/strings.dart';
-import 'package:physio_calc/app/data/models/ugo_fisch_scale/ugo_fisch_scale_field_model.dart';
 
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
-class UgoFischScaleController extends GetxController {
+class GcsController extends GetxController {
+  final getAppBarTitle = ''.obs;
+
   final formKey = GlobalKey<FormBuilderState>();
 
-  final _appBarTitle = ''.obs;
-
-  List<UgoFischScaleFieldModel> listFields = [];
-
-  String get appBarTitle => _appBarTitle.value;
-
-  AutovalidateMode autoValidate = AutovalidateMode.disabled;
-
-  Map<String, FormBuilderFieldState> get _fields =>
-      formKey.currentState!.fields;
-  Map<String, dynamic> get fieldsValue => formKey.currentState!.value;
+  List<FormFieldModel> formFieldsModel = [];
 
   int totalScore = 0;
-  String gradeResult = '-';
+  String gradeLevel = '-';
+  String gradeClassification = '-';
+
+  AutovalidateMode autoValidate = AutovalidateMode.disabled;
 
   @override
   void onInit() {
     super.onInit();
 
-    _appBarTitle(Get.parameters['name']);
+    getAppBarTitle(Get.parameters['name']);
 
-    listFields = [
-      UgoFischScaleFieldModel(
-          name: 'shut_up',
-          label: 'Shut Up (Istirahat/Diam)',
-          pointName: 'shut_up_point'),
-      UgoFischScaleFieldModel(
-          name: 'wrinkled_forehead',
-          label: 'Wrinkled Forehead (Mengerutkan Dahi)',
-          pointName: 'wrinkled_forehead_point'),
-      UgoFischScaleFieldModel(
-          name: 'close_your_eyes',
-          label: 'Close Your Eyes (Menutup Mata)',
-          pointName: 'close_your_eyes_point'),
-      UgoFischScaleFieldModel(
-          name: 'smile', label: 'Smile (Tersenyum)', pointName: 'smile_point'),
-      UgoFischScaleFieldModel(
-          name: 'whistling',
-          label: 'Whistling (Bersiul)',
-          pointName: 'whistling_point'),
-    ];
-  }
-
-  void onChangeField(String? value, UgoFischScaleFieldModel field, int index) {
-    formKey.currentState?.save();
-
-    int x = 0;
-
-    switch (field.name) {
-      case 'shut_up':
-        x = 20;
-        break;
-      case 'wrinkled_forehead':
-        x = 10;
-        break;
-      case 'close_your_eyes':
-        x = 30;
-        break;
-      case 'smile':
-        x = 30;
-        break;
-      case 'whistling':
-        x = 10;
-        break;
-    }
-
-    _formula(x: x, i: index, field: field);
-  }
-
-  void onSubmit() {
-    if (formKey.currentState?.saveAndValidate() ?? false) {
-      _finalResult();
-
-      Get.dialog(AlertDialog(
-        title: const Text('Result'),
-        content: RichText(
-            text: TextSpan(
-                style: const TextStyle(color: Colors.black),
-                children: [
-              TextSpan(text: 'Score : $totalScore'),
-              const TextSpan(text: '\n\n'),
-              TextSpan(text: 'Grade : $gradeResult'),
-            ])),
-        actions: [ElevatedButton(onPressed: Get.back, child: const Text('Ok'))],
-      ));
-      return;
-    }
-
-    autoValidate = AutovalidateMode.onUserInteraction;
-    update();
+    formFieldsModel.addAll(FormFieldModel.listFromJson(gcsQuestions));
   }
 
   void onReset() {
     formKey.currentState!.reset();
     autoValidate = AutovalidateMode.disabled;
     update();
+
+    for (var i = 0; i < formFieldsModel.length; i++) {
+      formFieldsModel[i] = formFieldsModel[i].copyWith(fieldPointValue: '-');
+    }
+    update();
   }
 
-  /// Save PDF
   void onSavePdf(GlobalKey<FormBuilderState> userInformationFormKey) async {
+    _finalResult();
+
     final Map<String, dynamic>? userInformation =
         userInformationFormKey.currentState?.value;
     final pdf = pw.Document();
-
-    _finalResult();
 
     Uint8List headerImage =
         (await rootBundle.load('assets/images/physio_calc.png'))
@@ -155,17 +89,17 @@ class UgoFischScaleController extends GetxController {
             ),
           );
 
-          for (UgoFischScaleFieldModel field in listFields) {
+          for (FormFieldModel field in formFieldsModel) {
             tr.add(
               pw.TableRow(
                 children: [
                   pw.Padding(
                     padding: const pw.EdgeInsets.symmetric(
                         vertical: 8.0, horizontal: 12.0),
-                    child: pw.Text(field.label),
+                    child: pw.Text(field.fieldLabel),
                   ),
                   pw.Container(
-                    child: pw.Center(child: pw.Text(field.pointValue)),
+                    child: pw.Center(child: pw.Text(field.fieldPointValue)),
                   ),
                 ],
               ),
@@ -179,7 +113,7 @@ class UgoFischScaleController extends GetxController {
                   padding: const pw.EdgeInsets.symmetric(
                       vertical: 8.0, horizontal: 12.0),
                   child: pw.Text(
-                    'Total',
+                    'TOTAL',
                     style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
                   ),
                 ),
@@ -201,16 +135,45 @@ class UgoFischScaleController extends GetxController {
                   padding: const pw.EdgeInsets.symmetric(
                       vertical: 8.0, horizontal: 12.0),
                   child: pw.Text(
-                    'Grade',
+                    'Tingkat Kesadaran',
                     style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
                   ),
                 ),
                 pw.Container(
                   child: pw.Center(
+                    child: pw.Padding(
+                      padding: const pw.EdgeInsets.all(8.0),
                       child: pw.Text(
-                    gradeResult,
+                        gradeLevel,
+                        style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+          tr.add(
+            pw.TableRow(
+              children: [
+                pw.Padding(
+                  padding: const pw.EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 12.0),
+                  child: pw.Text(
+                    'Klasifikasi Head Injury',
                     style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-                  )),
+                  ),
+                ),
+                pw.Container(
+                  child: pw.Center(
+                    child: pw.Padding(
+                      padding: const pw.EdgeInsets.all(8.0),
+                      child: pw.Text(
+                        gradeClassification,
+                        style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -232,7 +195,7 @@ class UgoFischScaleController extends GetxController {
                   crossAxisAlignment: pw.CrossAxisAlignment.start,
                   children: [
                     pw.Text(
-                      ugoFischScale,
+                      gcs,
                       style: pw.TextStyle(
                         fontSize: TextsTheme.sizeTextLg,
                         fontWeight: pw.FontWeight.bold,
@@ -292,14 +255,15 @@ class UgoFischScaleController extends GetxController {
                         ]),
                     pw.SizedBox(height: 20.0),
                     pw.Table(
-                        border: pw.TableBorder.all(),
-                        columnWidths: const {
-                          0: pw.FlexColumnWidth(),
-                          1: pw.FixedColumnWidth(128),
-                        },
-                        defaultVerticalAlignment:
-                            pw.TableCellVerticalAlignment.middle,
-                        children: tr),
+                      border: pw.TableBorder.all(),
+                      columnWidths: const {
+                        0: pw.FlexColumnWidth(),
+                        1: pw.FixedColumnWidth(128),
+                      },
+                      defaultVerticalAlignment:
+                          pw.TableCellVerticalAlignment.middle,
+                      children: tr,
+                    ),
                   ],
                 ),
               )
@@ -312,59 +276,92 @@ class UgoFischScaleController extends GetxController {
     Uint8List bytes = await pdf.save();
 
     final directory = await getApplicationDocumentsDirectory();
-    final file = File('${directory.path}/Result $ugoFischScale.pdf');
+    final file = File('${directory.path}/Result $gcs.pdf');
 
     await file.writeAsBytes(bytes);
     await OpenFile.open(file.path);
     Get.back();
   }
 
-  convtoImage(String name) async {
-    pw.MemoryImage(
-      (await rootBundle.load('assets/images/physio_calc.png'))
-          .buffer
-          .asUint8List(),
-    );
-  }
+  void onSubmit(GlobalKey<FormBuilderState> callback) {
+    if (formKey.currentState?.saveAndValidate() ?? false) {
+      _finalResult();
 
-  // Formula
-  void _formula({
-    required int x,
-    required int i,
-    required UgoFischScaleFieldModel field,
-  }) {
-    if (fieldsValue[field.name] == null) return;
-
-    double persentage = fieldsValue[field.name] / 100;
-    int result = (x * persentage).round();
-
-    _fields['${field.name}_point']!.didChange('$result');
-
-    listFields[i] = listFields[i].copyWith(pointValue: '$result');
-  }
-
-  // Final Result
-  void _finalResult() {
-    int totalScore = 0;
-
-    for (UgoFischScaleFieldModel field in listFields) {
-      totalScore += int.parse(field.pointValue);
+      Get.dialog(
+        AlertDialog(
+          title: const Text('Result'),
+          content: RichText(
+            text: TextSpan(
+              style: const TextStyle(color: Colors.black),
+              children: [
+                TextSpan(text: 'Score : $totalScore'),
+                const TextSpan(text: '\n\n'),
+                TextSpan(text: 'Tingkat Kesadaran : $gradeLevel'),
+                const TextSpan(text: '\n\n'),
+                TextSpan(
+                    text: 'Klasifikasi Head Injury : $gradeClassification'),
+              ],
+            ),
+          ),
+          actions: [
+            ElevatedButton(onPressed: Get.back, child: const Text('Ok'))
+          ],
+        ),
+      );
+      return;
     }
 
-    String gradeResult;
-    if (totalScore == 100) {
-      gradeResult = 'Normal';
-    } else if (totalScore >= 70 && totalScore <= 99) {
-      gradeResult = 'Prognosis Baik';
-    } else if (totalScore >= 30 && totalScore <= 69) {
-      gradeResult = 'Prognosis Cukup';
-    } else if (totalScore >= 0 && totalScore <= 29) {
-      gradeResult = 'Prognosis Buruk';
-    } else {
-      gradeResult = '-';
+    autoValidate = AutovalidateMode.onUserInteraction;
+    update();
+  }
+
+  void onChanged({
+    required int index,
+    FormFieldScoreModel? value,
+  }) {
+    formKey.currentState?.save();
+
+    formFieldsModel[index] = formFieldsModel[index]
+        .copyWith(fieldPointValue: '${value?.scoreValue}');
+    update();
+  }
+
+  void _finalResult() {
+    int totalScore = 0;
+    String gradeLevel = '-';
+    String gradeClassification = '-';
+
+    for (FormFieldModel field in formFieldsModel) {
+      totalScore += int.parse(field.fieldPointValue);
+    }
+
+    // Grade Level
+    if (totalScore == 15) {
+      gradeLevel = 'Composmentis';
+    }
+    if (totalScore >= 13 && totalScore <= 14) {
+      gradeLevel = 'Somnolen/Lathergy';
+    }
+    if (totalScore >= 8 && totalScore <= 12) {
+      gradeLevel = 'Sopor';
+    }
+    if (totalScore >= 3 && totalScore <= 7) {
+      gradeLevel = 'Coma';
+    }
+
+    // Grade Level
+    if (totalScore >= 13 && totalScore <= 15) {
+      gradeClassification = 'Mild Head Injury';
+    }
+    if (totalScore >= 9 && totalScore <= 12) {
+      gradeClassification = 'Moderate Head Injury';
+    }
+    if (totalScore >= 0 && totalScore <= 8) {
+      gradeClassification = 'Severe Head Injury';
     }
 
     this.totalScore = totalScore;
-    this.gradeResult = gradeResult;
+    this.gradeLevel = gradeLevel;
+    this.gradeClassification = gradeClassification;
   }
 }

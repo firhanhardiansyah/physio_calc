@@ -8,6 +8,8 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const UGO_FISCH_SCALE = _Paths.UGO_FISCH_SCALE;
   static const BARTHEL_INDEX = _Paths.BARTHEL_INDEX;
+  static const BBS = _Paths.BBS;
+  static const GCS = _Paths.GCS;
 }
 
 abstract class _Paths {
@@ -15,4 +17,6 @@ abstract class _Paths {
   static const HOME = '/home';
   static const UGO_FISCH_SCALE = '/ugo-fisch-scale';
   static const BARTHEL_INDEX = '/barthel-index';
+  static const BBS = '/bbs';
+  static const GCS = '/gcs';
 }
