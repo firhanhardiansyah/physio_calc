@@ -26,18 +26,18 @@ flutter build apk --flavor prod -t lib/main_prod.dart
 flutter build appbundle --flavor prod -t lib/main_prod.dart
 ```
 
-### For Staging you can use:
+### For Demo you can use:
 
 - APK
 
 ```
-flutter build apk --flavor staging -t lib/main_staging.dart
+flutter build apk --flavor demo -t lib/main_demo.dart
 ```
 
 - App Bundle
 
 ```
-flutter build appbundle --flavor staging -t lib/main_staging.dart
+flutter build appbundle --flavor demo -t lib/main_demo.dart
 ```
 
 ### For Development you can use:
@@ -62,4 +62,10 @@ get create page:<feature_name> on modules/features
 - Build Runner
 ```
 flutter pub run build_runner build --delete-conflicting-outputs
+```
+
+- Icon with flavor
+- Demo
+```
+flutter pub run flutter_launcher_icons -f flutter_launcher_icons_demo.yaml
 ```

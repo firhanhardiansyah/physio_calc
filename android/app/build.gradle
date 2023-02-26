@@ -66,13 +66,13 @@ android {
     productFlavors {
         dev {
             dimension "version"
-            resValue "string", "app_name", "Physio Calc Dev"
+            resValue "string", "app_name", "Dev Physio Calc"
             versionNameSuffix "-dev"
             applicationIdSuffix ".dev"
         }
         demo {
             dimension "version"
-            resValue "string", "app_name", "Physio Calc Demo"
+            resValue "string", "app_name", "Demo Physio Calc"
             versionNameSuffix "-demo"
             applicationIdSuffix ".demo"
         }
