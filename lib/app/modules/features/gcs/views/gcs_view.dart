@@ -20,7 +20,7 @@ class GcsView extends GetView<GcsController> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(58),
         child: AppBarCustom(
-          title: controller.getAppBarTitle(),
+          title: Text('${controller.appBarTitle}'),
           onSave: () {
             if (controller.formKey.currentState?.isValid == false) {
               Get.dialog(
@@ -151,8 +151,6 @@ class GcsView extends GetView<GcsController> {
                             contentPadding: EdgeInsets.only(right: 8.0),
                           ),
                           autovalidateMode: controller.autoValidate,
-                          // autovalidateMode:
-                          //     AutovalidateMode.onUserInteraction,
                           validator: FormBuilderValidators.required(
                               errorText: 'Harap dipilih salah satu'),
                           onChanged: (value) =>

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
-import 'package:physio_calc/app/core/values/questions/bbs_question.dart';
+import 'package:physio_calc/app/core/values/questions/mmse_question.dart';
 import 'package:physio_calc/app/core/values/strings.dart';
 import 'package:physio_calc/app/data/models/form_field_model/form_field_model.dart';
 
@@ -16,35 +16,23 @@ import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
-class BbsController extends GetxController {
+class MmseController extends GetxController {
   final appBarTitle = ''.obs;
-
   final formKey = GlobalKey<FormBuilderState>();
 
-  List<FormFieldModel> formFieldsModel = [];
-  int totalScore = 0;
-  String gradeResult = '-';
+  List<QuestionModel> questions = [];
 
   AutovalidateMode autoValidate = AutovalidateMode.disabled;
+
+  int totalScore = 0;
+  String gradeLevel = '-';
 
   @override
   void onInit() {
     super.onInit();
 
     appBarTitle(Get.parameters['name']);
-
-    formFieldsModel.addAll(FormFieldModel.listFromJson(bbsQuestions));
-  }
-
-  void onReset() {
-    formKey.currentState!.reset();
-    autoValidate = AutovalidateMode.disabled;
-    update();
-
-    for (var i = 0; i < formFieldsModel.length; i++) {
-      formFieldsModel[i] = formFieldsModel[i].copyWith(fieldPointValue: '-');
-    }
-    update();
+    questions.addAll(QuestionModel.listFromJson(mmseQuestions));
   }
 
   void onSavePdf(GlobalKey<FormBuilderState> userInformationFormKey) async {
@@ -87,17 +75,18 @@ class BbsController extends GetxController {
             ),
           );
 
-          for (FormFieldModel field in formFieldsModel) {
+          for (QuestionModel question in questions) {
             tr.add(
               pw.TableRow(
                 children: [
                   pw.Padding(
                     padding: const pw.EdgeInsets.symmetric(
                         vertical: 8.0, horizontal: 12.0),
-                    child: pw.Text(field.fieldLabel),
+                    child: pw.Text(question.questionName),
                   ),
                   pw.Container(
-                    child: pw.Center(child: pw.Text(field.fieldPointValue)),
+                    child: pw.Center(
+                        child: pw.Text(question.questionPoint.toString())),
                   ),
                 ],
               ),
@@ -133,7 +122,7 @@ class BbsController extends GetxController {
                   padding: const pw.EdgeInsets.symmetric(
                       vertical: 8.0, horizontal: 12.0),
                   child: pw.Text(
-                    'INTERPRETASI',
+                    'Tingkat Kesadaran',
                     style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
                   ),
                 ),
@@ -142,7 +131,7 @@ class BbsController extends GetxController {
                     child: pw.Padding(
                       padding: const pw.EdgeInsets.all(8.0),
                       child: pw.Text(
-                        gradeResult,
+                        gradeLevel,
                         style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
                       ),
                     ),
@@ -168,7 +157,7 @@ class BbsController extends GetxController {
                   crossAxisAlignment: pw.CrossAxisAlignment.start,
                   children: [
                     pw.Text(
-                      bbs,
+                      mmse,
                       style: pw.TextStyle(
                         fontSize: TextsTheme.sizeTextLg,
                         fontWeight: pw.FontWeight.bold,
@@ -228,14 +217,15 @@ class BbsController extends GetxController {
                         ]),
                     pw.SizedBox(height: 20.0),
                     pw.Table(
-                        border: pw.TableBorder.all(),
-                        columnWidths: const {
-                          0: pw.FlexColumnWidth(),
-                          1: pw.FixedColumnWidth(128),
-                        },
-                        defaultVerticalAlignment:
-                            pw.TableCellVerticalAlignment.middle,
-                        children: tr),
+                      border: pw.TableBorder.all(),
+                      columnWidths: const {
+                        0: pw.FlexColumnWidth(),
+                        1: pw.FixedColumnWidth(196),
+                      },
+                      defaultVerticalAlignment:
+                          pw.TableCellVerticalAlignment.middle,
+                      children: tr,
+                    ),
                   ],
                 ),
               )
@@ -248,66 +238,95 @@ class BbsController extends GetxController {
     Uint8List bytes = await pdf.save();
 
     final directory = await getApplicationDocumentsDirectory();
-    final file = File('${directory.path}/Result $bbs.pdf');
+    final file = File('${directory.path}/Result $mmse.pdf');
 
     await file.writeAsBytes(bytes);
     await OpenFile.open(file.path);
     Get.back();
   }
 
-  void onSubmit(GlobalKey<FormBuilderState> callback) {
-    if (formKey.currentState?.saveAndValidate() ?? false) {
-      _finalResult();
-
-      Get.dialog(AlertDialog(
-        title: const Text('Result'),
-        content: RichText(
-            text: TextSpan(
-                style: const TextStyle(color: Colors.black),
-                children: [
-              TextSpan(text: 'Score : $totalScore'),
-              const TextSpan(text: '\n\n'),
-              TextSpan(text: 'Interpretasi : $gradeResult'),
-            ])),
-        actions: [ElevatedButton(onPressed: Get.back, child: const Text('Ok'))],
-      ));
-      return;
-    }
-
-    autoValidate = AutovalidateMode.onUserInteraction;
-    update();
+  void onReset() {
+    formKey.currentState!.reset();
   }
 
   void onChanged({
-    required int index,
-    FormFieldScoreModel? value,
+    required int questionIndex,
+    required int subQuestionIndex,
+    List<FormFieldScoreModel>? scores,
   }) {
     formKey.currentState?.save();
 
-    formFieldsModel[index] = formFieldsModel[index]
-        .copyWith(fieldPointValue: '${value?.scoreValue}');
+    int totalQuestionScore = 0;
+    int totalSubQuestionScore = 0;
+
+    if (scores != null) {
+      for (FormFieldScoreModel score in scores) {
+        totalSubQuestionScore += score.scoreValue;
+      }
+    }
+
+    List<FormFieldModel> subQuestions =
+        questions[questionIndex].fields.toList();
+
+    subQuestions[subQuestionIndex] = subQuestions[subQuestionIndex]
+        .copyWith(fieldPointValue: totalSubQuestionScore);
+
+    questions[questionIndex] =
+        questions[questionIndex].copyWith(fields: subQuestions);
+
+    List<FormFieldModel> fields = questions[questionIndex].fields;
+
+    for (FormFieldModel field in fields) {
+      totalQuestionScore += field.fieldPointValue as int;
+    }
+
+    questions[questionIndex] =
+        questions[questionIndex].copyWith(questionPoint: totalQuestionScore);
     update();
+  }
+
+  void onSubmit(GlobalKey<FormBuilderState> callback) {
+    _finalResult();
+
+    Get.dialog(
+      AlertDialog(
+        title: const Text('Result'),
+        content: RichText(
+          text: TextSpan(
+            style: const TextStyle(color: Colors.black),
+            children: [
+              TextSpan(text: 'Score : $totalScore'),
+              const TextSpan(text: '\n\n'),
+              TextSpan(text: 'Interpretasi : $gradeLevel'),
+            ],
+          ),
+        ),
+        actions: [ElevatedButton(onPressed: Get.back, child: const Text('Ok'))],
+      ),
+    );
   }
 
   void _finalResult() {
     int totalScore = 0;
-    String gradeResult = '-';
+    String gradeLevel = '-';
 
-    for (FormFieldModel field in formFieldsModel) {
-      totalScore += int.parse(field.fieldPointValue);
+    for (QuestionModel question in questions) {
+      totalScore += question.questionPoint;
     }
 
-    if (totalScore >= 41 && totalScore <= 56) {
-      gradeResult = 'Resiko Jatuh Rendah';
+    if (totalScore >= 0 && totalScore <= 17) {
+      gradeLevel = 'Severe cognitive impairment';
     }
-    if (totalScore >= 21 && totalScore <= 40) {
-      gradeResult = 'Resiko Jatuh Menengah';
+
+    if (totalScore >= 18 && totalScore <= 23) {
+      gradeLevel = 'Mild cognitive impairment';
     }
-    if (totalScore >= 0 && totalScore <= 20) {
-      gradeResult = 'Resiko Jatuh Tinggi';
+
+    if (totalScore >= 24 && totalScore <= 30) {
+      gradeLevel = 'No cognitive impairment';
     }
 
     this.totalScore = totalScore;
-    this.gradeResult = gradeResult;
+    this.gradeLevel = gradeLevel;
   }
 }

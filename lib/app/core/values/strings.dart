@@ -16,8 +16,9 @@ const String uefs = "Upper Extremity Functional Scale (UEFS)";
 const String womac =
     "Western Ontario and McMaster Universities Arthritis Index (WOMAC)";
 
-/// Info
+/// ---------------------------------------------
 /// Ugo Fisch Scale
+/// ---------------------------------------------
 const String infoUgoFischScale =
     "Ugo Fisch Scale merupakan pemeriksaan untuk mengetahui kemampuan fungsional pada penederita Bell's Plasy. Pengukuran dengan menggunakan skala ugo fisch ini bertujuan untuk pemeriksaan motorik dan mengevaluasi setiap perkembangan kemajuan fungsional motorik otot-otot wajah pada penderita bell's palsy.";
 const String infoUgoFischScaleRef = """
@@ -26,8 +27,9 @@ Afandi GE, Rahman I. Penatalaksanaan Fisioterapi pada Kasus Bell’s Palsy Sinis
 Neuromuscular E, Method T, Otot F. DOI: http://dx.doi.org/10.33846/sf13121 Efektifitas. 2022;13(1):113-116.
 """;
 
-/// Info
+/// ---------------------------------------------
 /// Barthel Index
+/// ---------------------------------------------
 const String infoBarthelIndex =
     "Indeks Barthel adalah instrumen 10 item yang mengukur kemandirian fungsional dalam aktivitas pribadi kehidupan sehari-hari (ADL). Skor total indeks Barthel adalah 100. Prevalensi disabilitas fisik yang tinggi merupakan area perhatian utama. Barthel index versi Indonesia memiliki validitas dan realibilitas baik yang dapat digunakan untuk pasien stroke";
 const String infoBarthelIndexRef = """
@@ -39,8 +41,9 @@ Sincihu Y, Dewi BDN. Peningkatan Kemandirian Lansia Berdasarkan   Perbedaan Acti
 Gupta S, Yadav R, Malhotra A. Assessment of physical disability using Barthel index among elderly of rural areas of district Jhansi (U.P), India. J Fam Med Prim Care. 2016;5(4):853. doi:10.4103/2249-4863.201178
 """;
 
-/// Info
+/// ---------------------------------------------
 /// BBS
+/// ---------------------------------------------
 const String infoBbs = """
 Berg Balance Scale (BBS) mengukur kapasitas keseimbangan statis dan dinamis menggunakan tugas utilitarian yang biasanya dilakukan dalam kehidupan sehari-hari. Berg Balance Scale (BBS) terdiri dari 14 item dengan score maximum 56, setiap item terdiri dari skala ordinal lima point mulai dari 0 hingga 4, dengan 0 menunjukkan tingkat fungsi terendah dan 4 tingkat fungsi tertinggi dan membutuhkan waktu sekitar 20 menit untuk menyelesaikannya. Reliabilitas test-retest untuk BBS excellent Intraclass Correlation Coefficients (ICC = 0.994). BBS dapat diandalkan dan skala yang valid untuk digunakan dalam penilaian keseimbangan lansia dewasa BBS tidak termasuk penilaian gait.
 
@@ -67,8 +70,9 @@ https://www.sralab.org/rehabilitation-measures/berg-balance-scale
 https://www.physio-pedia.com/Berg_Balance_Scale
 """;
 
-/// Info
+/// ---------------------------------------------
 /// GCS
+/// ---------------------------------------------
 const String infoGcs = """
 Pemeriksaan Glasgow Coma Scale (GCS) meliputi eye opening , verbal response, dan motor response. Skala ini umumnya digunakan untuk menilai kesadaran setelah traumatic brain injury (TBI). Skor ditentukan dari penjumlahan skor pada masing-masing 3 kategori, dengan skor maksimal 15 dan skor minimal 3. Langkah untuk melakukan penilaian GCS adalah Check, observe, stimulate, rate. Penilaian kesadaran penting dilakukan karena untuk menegakkan diagnosis dan menentukan prognosis pasien.
 
@@ -91,4 +95,26 @@ https://www.sralab.org/rehabilitation-measures/glasgow-coma-scale
 https://en.wikipedia.org/wiki/Glasgow_Coma_Scale
 
 https://www.physio-pedia.com/Glasgow_Coma_Scale
+""";
+
+
+/// ---------------------------------------------
+/// MMSE
+/// ---------------------------------------------
+const String infoMmse = """
+Mini-Mental State Examination (MMSE) adalah alat skrining singkat yang paling dikenal dan paling sering digunakan untuk memberikan ukuran keseluruhan gangguan kognitif dalam pengaturan klinis, penelitian dan komunitas. MMSE pertama kali diterbitkan pada tahun 1975 sebagai lampiran artikel yang ditulis oleh Marsekal F. Folstein, Susan Folstein, dan Paul R. McHugh. MMSE terdiri dari beberapa domain yang berbeda, yaitu tes orientasi waktu (5 poin), orientasi tempat (5 poin), registrasi (3 poin), perhatian dan perhitungan (5 poin), mengingat (3 poin), dan bahasa (9 poin). ), masing-masing. Skala MMSE berkisar dari 0 hingga 30, dan skor yang lebih tinggi menunjukkan fungsi kognitif yang lebih baik.
+""";
+const String infoMmseRef = """
+Referensi :
+Arevalo-Rodriguez, I., Smailagic, N., Roquéi Figuls, M., Ciapponi, A., Sanchez-Perez, E., Giannakou, A., Pedraza, O. L., Bonfill Cosp, X., & Cullum, S. (2015). Mini-Mental State Examination (MMSE) for the detection of Alzheimer’s disease and other dementias in people with mild cognitive impairment (MCI). Cochrane Database of Systematic Reviews, 2015(3). https://doi.org/10.1002/14651858.CD010783.pub2
+
+Folstein, MF; Folstein, SE; McHugh, PR (1975). ""Mini-mental status". A practical method for grading the cognitive state of patients for the clinician". Journal of Psychiatric Research. 12 (3): 189–98. doi:10.1016/0022-3956(75)90026-6. PMID 1202204. S2CID 25310196.
+
+Su, Y., Dong, J., Sun, J., Zhang, Y., Ma, S., Li, M., Zhang, A., Cheng, B., Cai, S., Bao, Q., Wang, S., & Zhu, P. (2021). Cognitive function assessed by Mini-mental state examination and risk of all-cause mortality: a community-based prospective cohort study. BMC Geriatrics, 21(1), 1–10. https://doi.org/10.1186/s12877-021-02471-9
+
+https://www.sralab.org/rehabilitation-measures/mini-mental-state-examination
+
+https://www.physio-pedia.com/Mini-Mental_State_Examination
+
+https://en.wikipedia.org/wiki/Mini%E2%80%93mental_state_examination
 """;

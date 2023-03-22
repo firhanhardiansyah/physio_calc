@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import 'package:get/get.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
-
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/values/strings.dart';
-import 'package:physio_calc/app/data/models/barthel_index/barthel_index_model.dart';
+import 'package:physio_calc/app/data/models/form_field_model/form_field_model.dart';
 import 'package:physio_calc/app/global_screens/user_form_screen.dart';
 import 'package:physio_calc/app/global_widgets/appbar_custom.dart';
+import 'package:physio_calc/app/global_widgets/form_builder_custom.dart';
 
-import '../controllers/barthel_index_controller.dart';
+import '../controllers/mmse_controller.dart';
 
-class BarthelIndexView extends GetView<BarthelIndexController> {
-  const BarthelIndexView({Key? key}) : super(key: key);
+class MmseView extends GetView<MmseController> {
+  const MmseView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(58),
         child: AppBarCustom(
-          title: Text('${controller.appBarTitle}'),
+          title: Text(
+            '${controller.appBarTitle}',
+            maxLines: 2,
+            style: TextsTheme.textBase,
+          ),
           onSave: () {
             if (controller.formKey.currentState?.isValid == false) {
               Get.dialog(
@@ -60,17 +63,19 @@ class BarthelIndexView extends GetView<BarthelIndexController> {
           onInfo: () {
             Get.dialog(AlertDialog(
               title: const Text('Info'),
-              content: RichText(
-                text: TextSpan(
-                  style: const TextStyle(color: Colors.black),
-                  children: [
-                    const TextSpan(text: infoBarthelIndex),
-                    const TextSpan(text: '\n\n'),
-                    TextSpan(
-                      text: infoBarthelIndexRef,
-                      style: TextsTheme.textXxs,
-                    ),
-                  ],
+              content: SingleChildScrollView(
+                child: RichText(
+                  text: TextSpan(
+                    style: const TextStyle(color: Colors.black),
+                    children: [
+                      const TextSpan(text: infoMmse),
+                      const TextSpan(text: '\n\n'),
+                      TextSpan(
+                        text: infoMmseRef,
+                        style: TextsTheme.textXxs,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ));
@@ -79,33 +84,46 @@ class BarthelIndexView extends GetView<BarthelIndexController> {
       ),
       body: GetBuilder(
         init: controller,
-        builder: (controller) => FormBuilder(
-          key: controller.formKey,
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const ScrollPhysics(),
-                  itemCount: controller.listFields.length,
-                  itemBuilder: (context, index) {
-                    final listField = controller.listFields[index];
+        builder: (controller) => FormBuilderCustom(
+          formKey: controller.formKey,
+          fields: [
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const ScrollPhysics(),
+              itemCount: controller.questions.length,
+              itemBuilder: (context, index) {
+                final question = controller.questions[index];
 
-                    return Padding(
+                List<Widget> subQuestion = [];
+
+                for (var fieldIndex = 0;
+                    fieldIndex < question.fields.length;
+                    fieldIndex++) {
+                  FormFieldModel field = question.fields[fieldIndex];
+
+                  subQuestion.add(
+                    Padding(
                       padding: const EdgeInsets.only(bottom: 16.0),
                       child: Column(
                         children: [
                           Flex(
                             direction: Axis.horizontal,
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Flexible(
                                 flex: 4,
-                                child: Text(
-                                  listField.label,
-                                  style: TextsTheme.textBaseBold,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      field.fieldLabel,
+                                      style: TextsTheme.textBase,
+                                    ),
+                                    if (field.fieldImageAssets != null) ...{
+                                      Image.asset('${field.fieldImageAssets}')
+                                    }
+                                  ],
                                 ),
                               ),
                               Flexible(
@@ -119,7 +137,7 @@ class BarthelIndexView extends GetView<BarthelIndexController> {
                                           .copyWith(color: Colors.indigo),
                                     ),
                                     Text(
-                                      listField.pointValue,
+                                      field.fieldPointValue.toString(),
                                       style: TextsTheme.textSmBold
                                           .copyWith(color: Colors.indigo),
                                     ),
@@ -128,11 +146,15 @@ class BarthelIndexView extends GetView<BarthelIndexController> {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 12.0),
-                          FormBuilderRadioGroup<BarthelIndexScoreModel>(
+                          const SizedBox(height: 8.0),
+                          FormBuilderCheckboxGroup<FormFieldScoreModel>(
+                            name: field.fieldName,
+                            decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.only(right: 8.0),
+                            ),
                             activeColor: Colors.indigo,
-                            name: listField.name,
-                            options: listField.score
+                            autovalidateMode: controller.autoValidate,
+                            options: field.fieldScores
                                 .map(
                                   (val) => FormBuilderFieldOption(
                                     value: val,
@@ -147,36 +169,37 @@ class BarthelIndexView extends GetView<BarthelIndexController> {
                                   ),
                                 )
                                 .toList(growable: false),
-                            decoration: const InputDecoration(
-                              contentPadding: EdgeInsets.only(right: 8.0),
+                            onChanged: (scores) => controller.onChanged(
+                              questionIndex: index,
+                              subQuestionIndex: fieldIndex,
+                              scores: scores,
                             ),
-                            autovalidateMode:
-                                controller.autoValidate,
-                            // autovalidateMode:
-                            //     AutovalidateMode.onUserInteraction,
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(
-                                errorText: 'Harap dipilih salah satu',
-                              )
-                            ]),
-                            onChanged: (value) => controller.onChanged(
-                                index: index, value: value),
-                          )
+                          ),
                         ],
                       ),
-                    );
-                  },
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size.fromHeight(42.0),
-                  ),
-                  onPressed: controller.onSubmit,
-                  child: const Text('Result'),
-                ),
-              ],
+                    ),
+                  );
+                }
+
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      question.questionName,
+                      style: TextsTheme.textXlBold,
+                    ),
+                    const SizedBox(height: 8.0),
+                    Column(children: subQuestion),
+                    const Divider(thickness: .2, height: 0),
+                    const SizedBox(height: 8.0),
+                  ],
+                );
+              },
             ),
-          ),
+          ],
+          onSubmit: controller.onSubmit,
+          textSubmit: 'Result',
         ),
       ),
     );

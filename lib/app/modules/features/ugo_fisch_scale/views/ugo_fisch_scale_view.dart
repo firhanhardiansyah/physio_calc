@@ -19,7 +19,7 @@ class UgoFischScaleView extends GetView<UgoFischScaleController> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(58),
         child: AppBarCustom(
-          title: controller.appBarTitle,
+          title: Text("${controller.appBarTitle}"),
           onSave: () {
             if (controller.formKey.currentState?.isValid == false) {
               Get.dialog(

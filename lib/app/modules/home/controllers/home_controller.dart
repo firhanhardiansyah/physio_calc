@@ -38,8 +38,8 @@ class HomeController extends GetxController {
       FeatureModel(
         id: 5,
         name: mmse,
-        route: '',
-        actived: false,
+        route: Routes.MMSE,
+        actived: true,
       ),
       FeatureModel(
         id: 6,

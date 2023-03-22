@@ -12,6 +12,7 @@ class FormFieldModel with _$FormFieldModel {
     required List<FormFieldScoreModel> fieldScores,
     required String fieldPointName,
     @Default('-') dynamic fieldPointValue,
+    String? fieldImageAssets,
   }) = _FormFieldModel;
 
   factory FormFieldModel.fromJson(Map<String, dynamic> json) =>
@@ -31,4 +32,20 @@ class FormFieldScoreModel with _$FormFieldScoreModel {
 
   factory FormFieldScoreModel.fromJson(Map<String, dynamic> json) =>
       _$FormFieldScoreModelFromJson(json);
+}
+
+@freezed
+class QuestionModel with _$QuestionModel {
+
+  factory QuestionModel({
+    required int id,
+    required String questionName,
+    @Default(0) int questionPoint,
+    required List<FormFieldModel> fields,
+  }) = _QuestionModel;
+
+  factory QuestionModel.fromJson(Map<String, dynamic> json) => _$QuestionModelFromJson(json);
+  
+  static List<QuestionModel> listFromJson(list) =>
+      List<QuestionModel>.from(list.map((x) => QuestionModel.fromJson(x)));
 }

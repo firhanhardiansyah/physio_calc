@@ -17,7 +17,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
 class GcsController extends GetxController {
-  final getAppBarTitle = ''.obs;
+  final appBarTitle = ''.obs;
 
   final formKey = GlobalKey<FormBuilderState>();
 
@@ -33,7 +33,7 @@ class GcsController extends GetxController {
   void onInit() {
     super.onInit();
 
-    getAppBarTitle(Get.parameters['name']);
+    appBarTitle(Get.parameters['name']);
 
     formFieldsModel.addAll(FormFieldModel.listFromJson(gcsQuestions));
   }

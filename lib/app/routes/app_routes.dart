@@ -10,6 +10,7 @@ abstract class Routes {
   static const BARTHEL_INDEX = _Paths.BARTHEL_INDEX;
   static const BBS = _Paths.BBS;
   static const GCS = _Paths.GCS;
+  static const MMSE = _Paths.MMSE;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const BARTHEL_INDEX = '/barthel-index';
   static const BBS = '/bbs';
   static const GCS = '/gcs';
+  static const MMSE = '/mmse';
 }

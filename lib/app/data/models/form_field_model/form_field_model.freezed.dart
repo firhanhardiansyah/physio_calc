@@ -27,6 +27,7 @@ mixin _$FormFieldModel {
       throw _privateConstructorUsedError;
   String get fieldPointName => throw _privateConstructorUsedError;
   dynamic get fieldPointValue => throw _privateConstructorUsedError;
+  String? get fieldImageAssets => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +47,8 @@ abstract class $FormFieldModelCopyWith<$Res> {
       String fieldLabel,
       List<FormFieldScoreModel> fieldScores,
       String fieldPointName,
-      dynamic fieldPointValue});
+      dynamic fieldPointValue,
+      String? fieldImageAssets});
 }
 
 /// @nodoc
@@ -68,6 +70,7 @@ class _$FormFieldModelCopyWithImpl<$Res, $Val extends FormFieldModel>
     Object? fieldScores = null,
     Object? fieldPointName = null,
     Object? fieldPointValue = freezed,
+    Object? fieldImageAssets = freezed,
   }) {
     return _then(_value.copyWith(
       fieldId: null == fieldId
@@ -94,6 +97,10 @@ class _$FormFieldModelCopyWithImpl<$Res, $Val extends FormFieldModel>
           ? _value.fieldPointValue
           : fieldPointValue // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      fieldImageAssets: freezed == fieldImageAssets
+          ? _value.fieldImageAssets
+          : fieldImageAssets // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -112,7 +119,8 @@ abstract class _$$_FormFieldModelCopyWith<$Res>
       String fieldLabel,
       List<FormFieldScoreModel> fieldScores,
       String fieldPointName,
-      dynamic fieldPointValue});
+      dynamic fieldPointValue,
+      String? fieldImageAssets});
 }
 
 /// @nodoc
@@ -132,6 +140,7 @@ class __$$_FormFieldModelCopyWithImpl<$Res>
     Object? fieldScores = null,
     Object? fieldPointName = null,
     Object? fieldPointValue = freezed,
+    Object? fieldImageAssets = freezed,
   }) {
     return _then(_$_FormFieldModel(
       fieldId: null == fieldId
@@ -158,6 +167,10 @@ class __$$_FormFieldModelCopyWithImpl<$Res>
           ? _value.fieldPointValue
           : fieldPointValue // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      fieldImageAssets: freezed == fieldImageAssets
+          ? _value.fieldImageAssets
+          : fieldImageAssets // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -171,7 +184,8 @@ class _$_FormFieldModel implements _FormFieldModel {
       required this.fieldLabel,
       required final List<FormFieldScoreModel> fieldScores,
       required this.fieldPointName,
-      this.fieldPointValue = '-'})
+      this.fieldPointValue = '-',
+      this.fieldImageAssets})
       : _fieldScores = fieldScores;
 
   factory _$_FormFieldModel.fromJson(Map<String, dynamic> json) =>
@@ -196,10 +210,12 @@ class _$_FormFieldModel implements _FormFieldModel {
   @override
   @JsonKey()
   final dynamic fieldPointValue;
+  @override
+  final String? fieldImageAssets;
 
   @override
   String toString() {
-    return 'FormFieldModel(fieldId: $fieldId, fieldName: $fieldName, fieldLabel: $fieldLabel, fieldScores: $fieldScores, fieldPointName: $fieldPointName, fieldPointValue: $fieldPointValue)';
+    return 'FormFieldModel(fieldId: $fieldId, fieldName: $fieldName, fieldLabel: $fieldLabel, fieldScores: $fieldScores, fieldPointName: $fieldPointName, fieldPointValue: $fieldPointValue, fieldImageAssets: $fieldImageAssets)';
   }
 
   @override
@@ -217,7 +233,9 @@ class _$_FormFieldModel implements _FormFieldModel {
             (identical(other.fieldPointName, fieldPointName) ||
                 other.fieldPointName == fieldPointName) &&
             const DeepCollectionEquality()
-                .equals(other.fieldPointValue, fieldPointValue));
+                .equals(other.fieldPointValue, fieldPointValue) &&
+            (identical(other.fieldImageAssets, fieldImageAssets) ||
+                other.fieldImageAssets == fieldImageAssets));
   }
 
   @JsonKey(ignore: true)
@@ -229,7 +247,8 @@ class _$_FormFieldModel implements _FormFieldModel {
       fieldLabel,
       const DeepCollectionEquality().hash(_fieldScores),
       fieldPointName,
-      const DeepCollectionEquality().hash(fieldPointValue));
+      const DeepCollectionEquality().hash(fieldPointValue),
+      fieldImageAssets);
 
   @JsonKey(ignore: true)
   @override
@@ -252,7 +271,8 @@ abstract class _FormFieldModel implements FormFieldModel {
       required final String fieldLabel,
       required final List<FormFieldScoreModel> fieldScores,
       required final String fieldPointName,
-      final dynamic fieldPointValue}) = _$_FormFieldModel;
+      final dynamic fieldPointValue,
+      final String? fieldImageAssets}) = _$_FormFieldModel;
 
   factory _FormFieldModel.fromJson(Map<String, dynamic> json) =
       _$_FormFieldModel.fromJson;
@@ -269,6 +289,8 @@ abstract class _FormFieldModel implements FormFieldModel {
   String get fieldPointName;
   @override
   dynamic get fieldPointValue;
+  @override
+  String? get fieldImageAssets;
   @override
   @JsonKey(ignore: true)
   _$$_FormFieldModelCopyWith<_$_FormFieldModel> get copyWith =>
@@ -447,5 +469,215 @@ abstract class _FormFieldScoreModel implements FormFieldScoreModel {
   @override
   @JsonKey(ignore: true)
   _$$_FormFieldScoreModelCopyWith<_$_FormFieldScoreModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+QuestionModel _$QuestionModelFromJson(Map<String, dynamic> json) {
+  return _QuestionModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$QuestionModel {
+  int get id => throw _privateConstructorUsedError;
+  String get questionName => throw _privateConstructorUsedError;
+  int get questionPoint => throw _privateConstructorUsedError;
+  List<FormFieldModel> get fields => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $QuestionModelCopyWith<QuestionModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $QuestionModelCopyWith<$Res> {
+  factory $QuestionModelCopyWith(
+          QuestionModel value, $Res Function(QuestionModel) then) =
+      _$QuestionModelCopyWithImpl<$Res, QuestionModel>;
+  @useResult
+  $Res call(
+      {int id,
+      String questionName,
+      int questionPoint,
+      List<FormFieldModel> fields});
+}
+
+/// @nodoc
+class _$QuestionModelCopyWithImpl<$Res, $Val extends QuestionModel>
+    implements $QuestionModelCopyWith<$Res> {
+  _$QuestionModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? questionName = null,
+    Object? questionPoint = null,
+    Object? fields = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      questionName: null == questionName
+          ? _value.questionName
+          : questionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      questionPoint: null == questionPoint
+          ? _value.questionPoint
+          : questionPoint // ignore: cast_nullable_to_non_nullable
+              as int,
+      fields: null == fields
+          ? _value.fields
+          : fields // ignore: cast_nullable_to_non_nullable
+              as List<FormFieldModel>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_QuestionModelCopyWith<$Res>
+    implements $QuestionModelCopyWith<$Res> {
+  factory _$$_QuestionModelCopyWith(
+          _$_QuestionModel value, $Res Function(_$_QuestionModel) then) =
+      __$$_QuestionModelCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      String questionName,
+      int questionPoint,
+      List<FormFieldModel> fields});
+}
+
+/// @nodoc
+class __$$_QuestionModelCopyWithImpl<$Res>
+    extends _$QuestionModelCopyWithImpl<$Res, _$_QuestionModel>
+    implements _$$_QuestionModelCopyWith<$Res> {
+  __$$_QuestionModelCopyWithImpl(
+      _$_QuestionModel _value, $Res Function(_$_QuestionModel) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? questionName = null,
+    Object? questionPoint = null,
+    Object? fields = null,
+  }) {
+    return _then(_$_QuestionModel(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      questionName: null == questionName
+          ? _value.questionName
+          : questionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      questionPoint: null == questionPoint
+          ? _value.questionPoint
+          : questionPoint // ignore: cast_nullable_to_non_nullable
+              as int,
+      fields: null == fields
+          ? _value._fields
+          : fields // ignore: cast_nullable_to_non_nullable
+              as List<FormFieldModel>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_QuestionModel implements _QuestionModel {
+  _$_QuestionModel(
+      {required this.id,
+      required this.questionName,
+      this.questionPoint = 0,
+      required final List<FormFieldModel> fields})
+      : _fields = fields;
+
+  factory _$_QuestionModel.fromJson(Map<String, dynamic> json) =>
+      _$$_QuestionModelFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String questionName;
+  @override
+  @JsonKey()
+  final int questionPoint;
+  final List<FormFieldModel> _fields;
+  @override
+  List<FormFieldModel> get fields {
+    if (_fields is EqualUnmodifiableListView) return _fields;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_fields);
+  }
+
+  @override
+  String toString() {
+    return 'QuestionModel(id: $id, questionName: $questionName, questionPoint: $questionPoint, fields: $fields)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_QuestionModel &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.questionName, questionName) ||
+                other.questionName == questionName) &&
+            (identical(other.questionPoint, questionPoint) ||
+                other.questionPoint == questionPoint) &&
+            const DeepCollectionEquality().equals(other._fields, _fields));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, questionName, questionPoint,
+      const DeepCollectionEquality().hash(_fields));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_QuestionModelCopyWith<_$_QuestionModel> get copyWith =>
+      __$$_QuestionModelCopyWithImpl<_$_QuestionModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_QuestionModelToJson(
+      this,
+    );
+  }
+}
+
+abstract class _QuestionModel implements QuestionModel {
+  factory _QuestionModel(
+      {required final int id,
+      required final String questionName,
+      final int questionPoint,
+      required final List<FormFieldModel> fields}) = _$_QuestionModel;
+
+  factory _QuestionModel.fromJson(Map<String, dynamic> json) =
+      _$_QuestionModel.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get questionName;
+  @override
+  int get questionPoint;
+  @override
+  List<FormFieldModel> get fields;
+  @override
+  @JsonKey(ignore: true)
+  _$$_QuestionModelCopyWith<_$_QuestionModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -20,7 +20,7 @@ class BbsView extends GetView<BbsController> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(58),
         child: AppBarCustom(
-          title: controller.getAppBarTitle(),
+          title: Text('${controller.appBarTitle}'),
           onSave: () {
             if (controller.formKey.currentState?.isValid == false) {
               Get.dialog(

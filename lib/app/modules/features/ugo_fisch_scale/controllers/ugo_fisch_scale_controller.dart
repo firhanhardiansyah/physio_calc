@@ -16,11 +16,10 @@ import 'package:pdf/widgets.dart' as pw;
 class UgoFischScaleController extends GetxController {
   final formKey = GlobalKey<FormBuilderState>();
 
-  final _appBarTitle = ''.obs;
+  final appBarTitle = ''.obs;
 
   List<UgoFischScaleFieldModel> listFields = [];
 
-  String get appBarTitle => _appBarTitle.value;
 
   AutovalidateMode autoValidate = AutovalidateMode.disabled;
 
@@ -35,7 +34,7 @@ class UgoFischScaleController extends GetxController {
   void onInit() {
     super.onInit();
 
-    _appBarTitle(Get.parameters['name']);
+    appBarTitle(Get.parameters['name']);
 
     listFields = [
       UgoFischScaleFieldModel(

@@ -6,6 +6,8 @@ import '../modules/features/bbs/bindings/bbs_binding.dart';
 import '../modules/features/bbs/views/bbs_view.dart';
 import '../modules/features/gcs/bindings/gcs_binding.dart';
 import '../modules/features/gcs/views/gcs_view.dart';
+import '../modules/features/mmse/bindings/mmse_binding.dart';
+import '../modules/features/mmse/views/mmse_view.dart';
 import '../modules/features/ugo_fisch_scale/bindings/ugo_fisch_scale_binding.dart';
 import '../modules/features/ugo_fisch_scale/views/ugo_fisch_scale_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -45,6 +47,11 @@ class AppPages {
       name: _Paths.GCS,
       page: () => const GcsView(),
       binding: GcsBinding(),
+    ),
+    GetPage(
+      name: _Paths.MMSE,
+      page: () => const MmseView(),
+      binding: MmseBinding(),
     ),
   ];
 }

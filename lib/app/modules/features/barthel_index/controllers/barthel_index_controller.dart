@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -17,8 +16,7 @@ import 'package:pdf/widgets.dart' as pw;
 class BarthelIndexController extends GetxController {
   final formKey = GlobalKey<FormBuilderState>();
 
-  final setAppBarTitle = ''.obs;
-  String get getAppBarTitle => setAppBarTitle.value;
+  final appBarTitle = ''.obs;
 
   List<BarthelIndexModel> listFields = [];
   int totalScore = 0;
@@ -30,7 +28,7 @@ class BarthelIndexController extends GetxController {
   void onInit() {
     super.onInit();
 
-    setAppBarTitle(Get.parameters['name']);
+    appBarTitle(Get.parameters['name']);
 
     listFields = [
       BarthelIndexModel(
@@ -149,7 +147,7 @@ class BarthelIndexController extends GetxController {
       BarthelIndexModel(
         id: 7,
         name: 'toilet_use',
-        label: 'Toilet Use (Penggunaan Toilet',
+        label: 'Toilet Use (Penggunaan Toilet)',
         score: [
           BarthelIndexScoreModel(
             scoreName: 'Tergantung bantuan orang lain',
@@ -295,8 +293,6 @@ class BarthelIndexController extends GetxController {
     final Map<String, dynamic>? userInformation =
         userInformationFormKey.currentState?.value;
     final pdf = pw.Document();
-
-    log('message userInformation : $userInformation');
 
     Uint8List headerImage =
         (await rootBundle.load('assets/images/physio_calc.png'))

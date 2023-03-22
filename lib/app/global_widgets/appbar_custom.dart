@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:physio_calc/app/core/themes/color_theme.dart';
 
 class AppBarCustom extends StatelessWidget {
-  const AppBarCustom(
-      {super.key,
-      required this.title,
-      required this.onSave,
-      required this.onReset,
-      required this.onInfo});
+  const AppBarCustom({
+    super.key,
+    required this.title,
+    required this.onSave,
+    required this.onReset,
+    required this.onInfo,
+  });
 
-  final String title;
+  final Widget title;
   final VoidCallback onSave;
   final VoidCallback onReset;
   final VoidCallback onInfo;
@@ -17,7 +18,7 @@ class AppBarCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title),
+      title: title,
       actions: [
         PopupMenuButton(
           onSelected: (value) {
