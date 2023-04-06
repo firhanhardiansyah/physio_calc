@@ -27,29 +27,29 @@ class NmqView extends GetView<NmqController> {
             style: TextsTheme.textBase,
           ),
           onSave: () {
-            // if (!controller.formKey.currentState!.isValid) {
-            //   Get.dialog(
-            //     AlertDialog(
-            //       title: const Text('Info'),
-            //       content: RichText(
-            //         text: const TextSpan(
-            //           style: TextStyle(color: Colors.black),
-            //           children: [
-            //             TextSpan(
-            //                 text: 'Harap lengkapi formulir terlebih dahulu!'),
-            //           ],
-            //         ),
-            //       ),
-            //       actions: [
-            //         ElevatedButton(
-            //           onPressed: Get.back,
-            //           child: const Text('Ok'),
-            //         )
-            //       ],
-            //     ),
-            //   );
-            //   return;
-            // }
+            if (!controller.formKey.currentState!.isValid) {
+              Get.dialog(
+                AlertDialog(
+                  title: const Text('Info'),
+                  content: RichText(
+                    text: const TextSpan(
+                      style: TextStyle(color: Colors.black),
+                      children: [
+                        TextSpan(
+                            text: 'Harap lengkapi formulir terlebih dahulu!'),
+                      ],
+                    ),
+                  ),
+                  actions: [
+                    ElevatedButton(
+                      onPressed: Get.back,
+                      child: const Text('Ok'),
+                    )
+                  ],
+                ),
+              );
+              return;
+            }
 
             Get.dialog(
               GestureDetector(
