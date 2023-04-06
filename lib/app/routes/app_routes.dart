@@ -11,6 +11,7 @@ abstract class Routes {
   static const BBS = _Paths.BBS;
   static const GCS = _Paths.GCS;
   static const MMSE = _Paths.MMSE;
+  static const NMQ = _Paths.NMQ;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const BBS = '/bbs';
   static const GCS = '/gcs';
   static const MMSE = '/mmse';
+  static const NMQ = '/nmq';
 }

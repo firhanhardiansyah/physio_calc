@@ -16,9 +16,16 @@ class HomeView extends GetView<HomeController> {
           actions: [
             IconButton(
                 onPressed: () {
-                  Get.dialog(const AlertDialog(
-                    title: Text('Tentang Aplikasi'),
-                    content: Text(appDescription),
+                  Get.dialog(AlertDialog(
+                    title: const Text('Tentang Aplikasi'),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Text(appDescription),
+                        // const SizedBox(height: 24.0),
+                        // Text('Firhan Hardiansyah'),
+                      ],
+                    ),
                   ));
                 },
                 icon: const Icon(Icons.info_outline))

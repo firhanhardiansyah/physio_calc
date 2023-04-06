@@ -44,8 +44,8 @@ class HomeController extends GetxController {
       FeatureModel(
         id: 6,
         name: nmq,
-        route: '',
-        actived: false,
+        route: Routes.NMQ,
+        actived: true,
       ),
       FeatureModel(
         id: 7,

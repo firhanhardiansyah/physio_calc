@@ -118,3 +118,23 @@ https://www.physio-pedia.com/Mini-Mental_State_Examination
 
 https://en.wikipedia.org/wiki/Mini%E2%80%93mental_state_examination
 """;
+
+
+
+/// ---------------------------------------------
+/// NMQ
+/// ---------------------------------------------
+const String infoNmq = """
+Salah satu alat ukur yang sering digunakan untuk menilai gangguan muskuloskeletal di seluruh dunia adalah Nordic Musculoskeletal Questionnaire (NMQ). NMQ versi bahasa Indonesia memiliki sifat psikometrik yang memuaskan dengan validitas dan reliabilitas yang memadai. Kuisioner ini menggunakan gambar tubuh manusia yang sudah dibagi menjadi 9 bagian utama, yaitu: Leher, Bahu, Punggung bagian atas, Siku, Punggung bagian bawah, Pergelangan tangan/tangan, Pinggang/pantat, Lutut, Tumit/kaki. cara penilaian dengan melihat dan menganalisa peta tubuh/body map.
+""";
+const String infoNmqRef = """
+Referensi :
+Afma, V., & Widodo, B. (2020). Juli 2020 PERANCANGAN ALAT BANTU PENGULITAN KAMBING MENGGUNAKAN METODE REBA ( RAPID ENTIRE BODY ASSESSMENT ) UNTUK MENGURANGI MSDs Program Studi Tekni Industri , Univesitas Riau Kepualauan Batam Jl . Batu aji baru , Batam , Kepulauan Riau Kuesioner Nordic. Profisiensi, 8(1), 1–6. https://www.journal.unrika.ac.id/index.php/jurnalprofisiensi/article/view/2482/1833
+
+Akh. Sokhibi, M. Z. A. (2021). Analisis Postur Kerja pada Stasiun Kerja Proses Som Kaos Kaki Studi Kasus UD. Karunia Sentosa Utama. Journal of Industrial Engineering and Technology, 1(2), 52–60. https://doi.org/10.24176/jointtech.v1i2.6500
+
+Ramdan, I. M., Duma, K., & Setyowati, D. L. (2019). Reliability and Validity Test of the Indonesian Version of the Nordic Musculoskeletal Questionnaire (NMQ) to Measure Musculoskeletal Disorders (MSD) in Traditional Women Weavers. Global Medical & Health Communication (GMHC), 7(2), 123–130. https://doi.org/10.29313/gmhc.v7i2.4132
+
+Setyanto, N. W., Efranto, R., Lukodono, R. P., & Dirawidya, A. (2015). Ergonomics Analysis in the Scarfing Process by OWAS, NIOSH and Nordic Body Map’s Method at Slab Steel Plant’s Division. International Journal of Innovative Research in Science, Engineering and Technology, 2006, 1086–1093. https://doi.org/10.15680/IJIRSET.2015.0403060
+""";
+
