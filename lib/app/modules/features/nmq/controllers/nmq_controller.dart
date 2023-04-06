@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -37,16 +36,6 @@ class NmqController extends GetxController implements QuestionnaireController {
     appBarTitle(Get.parameters['name']);
 
     formFieldsModel.addAll(FormFieldModel.listFromJson(nmqQuestions));
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
   }
 
   @override
@@ -253,118 +242,6 @@ class NmqController extends GetxController implements QuestionnaireController {
             ),
             pw.SizedBox(height: 20.0),
 
-            // pw.Table(
-            //   border: pw.TableBorder.all(),
-            //   columnWidths: const {
-            //     0: pw.FlexColumnWidth(1.0),
-            //     1: pw.FlexColumnWidth(2.0),
-            //   },
-            //   children: [
-            //     pw.TableRow(children: [
-            //       pw.Container(
-            //         alignment: pw.Alignment.center,
-            //         padding: const pw.EdgeInsets.only(top: 12.0, right: 8.0),
-            //         child: pw.Image(
-            //           pw.MemoryImage(bodyMapImage),
-            //           height: 400.0,
-            //         ),
-            //       ),
-            //       pw.Table(children: [
-            //         pw.TableRow(children: [
-            //           pw.Table(border: pw.TableBorder.all(), children: [
-            //             pw.TableRow(children: [
-            //               pw.Padding(
-            //                 padding: const pw.EdgeInsets.all(4.0),
-            //                 child:
-            //                     pw.Text('No', textAlign: pw.TextAlign.center),
-            //               ),
-            //               pw.Padding(
-            //                 padding: const pw.EdgeInsets.all(4.0),
-            //                 child: pw.Text('Jenis Keluhan'),
-            //               ),
-            //               pw.Padding(
-            //                 padding: const pw.EdgeInsets.all(4.0),
-            //                 child: pw.Text(
-            //                   'Score',
-            //                   textAlign: pw.TextAlign.center,
-            //                 ),
-            //               ),
-            //             ]),
-            //             ...formFieldsModel.map((e) {
-            //               int number = e.fieldId - 1;
-
-            //               return pw.TableRow(children: [
-            //                 pw.Padding(
-            //                   padding: const pw.EdgeInsets.all(4.0),
-            //                   child: pw.Text(
-            //                     number.toString(),
-            //                     textAlign: pw.TextAlign.center,
-            //                   ),
-            //                 ),
-            //                 pw.Padding(
-            //                   padding: const pw.EdgeInsets.all(4.0),
-            //                   child: pw.Text(e.fieldLabel),
-            //                 ),
-            //                 pw.Padding(
-            //                   padding: const pw.EdgeInsets.all(4.0),
-            //                   child: pw.Text(
-            //                     e.fieldPointValue,
-            //                     textAlign: pw.TextAlign.center,
-            //                   ),
-            //                 ),
-            //               ]);
-            //             }).toList(),
-            //           ]),
-            //         ])
-            //       ])
-            //     ])
-            //   ],
-            // )
-
-            // pw.Table(border: pw.TableBorder.all(), children: [
-            //   pw.TableRow(children: [
-            //     pw.Padding(
-            //       padding: const pw.EdgeInsets.all(4.0),
-            //       child: pw.Text('No', textAlign: pw.TextAlign.center),
-            //     ),
-            //     pw.Padding(
-            //       padding: const pw.EdgeInsets.all(4.0),
-            //       child: pw.Text('Jenis Keluhan'),
-            //     ),
-            //     pw.Padding(
-            //       padding: const pw.EdgeInsets.all(4.0),
-            //       child: pw.Text(
-            //         'Score',
-            //         textAlign: pw.TextAlign.center,
-            //       ),
-            //     ),
-            //   ]),
-            //   ...formFieldsModel.map((e) {
-            //     int number = e.fieldId - 1;
-
-            //     return pw.TableRow(children: [
-            //       pw.Padding(
-            //         padding: const pw.EdgeInsets.all(4.0),
-            //         child: pw.Text(
-            //           number.toString(),
-            //           textAlign: pw.TextAlign.center,
-            //         ),
-            //       ),
-            //       pw.Padding(
-            //         padding: const pw.EdgeInsets.all(4.0),
-            //         child: pw.Text(e.fieldLabel),
-            //       ),
-            //       pw.Padding(
-            //         padding: const pw.EdgeInsets.all(4.0),
-            //         child: pw.Text(
-            //           e.fieldPointValue,
-            //           textAlign: pw.TextAlign.center,
-            //         ),
-            //       ),
-            //     ]);
-            //   }).toList(),
-            // ]),
-
             pw.Container(
                 width: double.infinity, height: 1, color: PdfColors.black),
 
@@ -453,17 +330,20 @@ class NmqController extends GetxController implements QuestionnaireController {
                 flex: 2,
                 child: pw.Table(children: [
                   pw.TableRow(children: [
-                    pw.Text('Individual Sum Skor', style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                    pw.Text('Individual Sum Skor',
+                        style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
                     pw.Text(' : '),
                     pw.Text(totalScore.toString()),
                   ]),
                   pw.TableRow(children: [
-                    pw.Text('Degree of Risk', style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                    pw.Text('Degree of Risk',
+                        style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
                     pw.Text(' : '),
                     pw.Text(degreeOfRisk),
                   ]),
                   pw.TableRow(children: [
-                    pw.Text('Improvement', style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                    pw.Text('Improvement',
+                        style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
                     pw.Text(' : '),
                     pw.Text(improvement),
                   ]),
