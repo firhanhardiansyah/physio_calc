@@ -165,7 +165,7 @@ class NmqController extends GetxController implements QuestionnaireController {
                             child: pw.Text('Jenis Kelamin'),
                           ),
                           pw.Text(':'),
-                          pw.Text('${userInformation?['age']}'),
+                          pw.Text('${userInformation?['gender']}'),
                         ]),
                         pw.TableRow(children: [
                           pw.Padding(
