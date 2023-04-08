@@ -66,7 +66,6 @@ class NmqView extends GetView<NmqController> {
                     fields: [
                       FormBuilderTextField(
                         name: 'weight',
-                        initialValue: '170',
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: const InputDecoration(
                           label: Text('Berat Badan'),
@@ -76,7 +75,6 @@ class NmqView extends GetView<NmqController> {
                       ),
                       FormBuilderTextField(
                         name: 'job',
-                        initialValue: 'Programmer',
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: const InputDecoration(
                           label: Text('Pekerjaan'),
@@ -86,7 +84,6 @@ class NmqView extends GetView<NmqController> {
                       ),
                       FormBuilderTextField(
                         name: 'length_of_work',
-                        initialValue: '5 Tahun',
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: const InputDecoration(
                           label: Text('Lama Bekerja'),
@@ -96,7 +93,6 @@ class NmqView extends GetView<NmqController> {
                       ),
                       FormBuilderTextField(
                         name: 'working_time',
-                        initialValue: '8 Jam',
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: const InputDecoration(
                           label: Text('Waktu Bekerja'),
