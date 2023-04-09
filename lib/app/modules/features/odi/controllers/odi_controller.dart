@@ -1,9 +1,7 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/src/form_builder.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/utils/abstracts/questionnaire_controller.dart';
@@ -37,16 +35,6 @@ class OdiController extends GetxController implements QuestionnaireController {
     appBarTitle(Get.parameters['name']);
 
     formFieldsModel.addAll(FormFieldModel.listFromJson(odiQuestions));
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
   }
 
   @override
@@ -126,6 +114,8 @@ class OdiController extends GetxController implements QuestionnaireController {
 
   @override
   void onSavePdf(GlobalKey<FormBuilderState> callback) async {
+    finalResult();
+
     final Map<String, dynamic>? userInformation = callback.currentState?.value;
     final pdf = pw.Document();
 
@@ -262,41 +252,44 @@ class OdiController extends GetxController implements QuestionnaireController {
                       ),
                     ),
                     pw.SizedBox(height: 20.0),
-                    pw.Row(children: [
-                      pw.Expanded(
-                        flex: 2,
-                        child: pw.Table(children: [
-                          pw.TableRow(children: [
-                            pw.Text('Score',
-                                style: pw.TextStyle(
-                                    fontWeight: pw.FontWeight.bold)),
-                            pw.Text(' : '),
-                            pw.Text(totalScore),
-                          ]),
-                          pw.TableRow(children: [
-                            pw.Text('Percentage',
-                                style: pw.TextStyle(
-                                    fontWeight: pw.FontWeight.bold)),
-                            pw.Text(' : '),
-                            pw.Text(percentage),
-                          ]),
-                          pw.TableRow(children: [
-                            pw.Text('Level Of Disability',
-                                style: pw.TextStyle(
-                                    fontWeight: pw.FontWeight.bold)),
-                            pw.Text(' : '),
-                            pw.Text(levelOfDisability),
-                          ]),
-                          pw.TableRow(children: [
-                            pw.Text('Interpretation',
-                                style: pw.TextStyle(
-                                    fontWeight: pw.FontWeight.bold)),
-                            pw.Text(' : '),
-                            pw.Text(interpretation),
-                          ]),
+                    pw.Table(
+                      tableWidth: pw.TableWidth.min,
+                      columnWidths: {
+                        0: const pw.FixedColumnWidth(120),
+                        1: const pw.FixedColumnWidth(12),
+                        2: const pw.FixedColumnWidth(380),
+                      },
+                      children: [
+                        pw.TableRow(children: [
+                          pw.Text('Score',
+                              style:
+                                  pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                          pw.Text(' : '),
+                          pw.Text(totalScore),
                         ]),
-                      ),
-                    ]),
+                        pw.TableRow(children: [
+                          pw.Text('Percentage',
+                              style:
+                                  pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                          pw.Text(' : '),
+                          pw.Text(percentage),
+                        ]),
+                        pw.TableRow(children: [
+                          pw.Text('Level Of Disability',
+                              style:
+                                  pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                          pw.Text(' : '),
+                          pw.Text(levelOfDisability),
+                        ]),
+                        pw.TableRow(children: [
+                          pw.Text('Interpretation',
+                              style:
+                                  pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                          pw.Text(' : '),
+                          pw.Text(interpretation),
+                        ]),
+                      ],
+                    ),
                   ],
                 ),
               )
