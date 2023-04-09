@@ -12,6 +12,7 @@ abstract class Routes {
   static const GCS = _Paths.GCS;
   static const MMSE = _Paths.MMSE;
   static const NMQ = _Paths.NMQ;
+  static const ODI = _Paths.ODI;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const GCS = '/gcs';
   static const MMSE = '/mmse';
   static const NMQ = '/nmq';
+  static const ODI = '/odi';
 }

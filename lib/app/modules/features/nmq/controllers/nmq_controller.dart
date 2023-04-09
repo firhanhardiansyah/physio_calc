@@ -64,7 +64,7 @@ class NmqController extends GetxController implements QuestionnaireController {
 
   @override
   void onSavePdf(GlobalKey<FormBuilderState> callback) async {
-    // finalResult();
+    finalResult();
 
     final Map<String, dynamic>? userInformation = callback.currentState?.value;
 
@@ -295,36 +295,6 @@ class NmqController extends GetxController implements QuestionnaireController {
 
             pw.SizedBox(height: 20.0),
 
-            // pw.Container(
-            //   width: 148.0,
-            //   child: pw.DefaultTextStyle(
-            //     style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-            //     child: pw.Column(children: [
-            //       pw.Row(
-            //         mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           pw.Text('Individual Sum Skor'),
-            //           pw.Text(totalScore.toString()),
-            //         ],
-            //       ),
-            //       pw.Row(
-            //         mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           pw.Text('Degree of Risk'),
-            //           pw.Text(degreeOfRisk),
-            //         ],
-            //       ),
-            //       pw.Row(
-            //         mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           pw.Text('Improvement'),
-            //           pw.Text(improvement),
-            //         ],
-            //       ),
-            //     ]),
-            //   ),
-            // ),
-
             pw.Row(children: [
               pw.Expanded(
                 flex: 2,
@@ -404,7 +374,7 @@ class NmqController extends GetxController implements QuestionnaireController {
 
     await file.writeAsBytes(bytes);
     await OpenFile.open(file.path);
-    // Get.back();
+    Get.back();
   }
 
   @override

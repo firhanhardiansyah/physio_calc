@@ -120,7 +120,6 @@ https://en.wikipedia.org/wiki/Mini%E2%80%93mental_state_examination
 """;
 
 
-
 /// ---------------------------------------------
 /// NMQ
 /// ---------------------------------------------
@@ -136,5 +135,27 @@ Akh. Sokhibi, M. Z. A. (2021). Analisis Postur Kerja pada Stasiun Kerja Proses S
 Ramdan, I. M., Duma, K., & Setyowati, D. L. (2019). Reliability and Validity Test of the Indonesian Version of the Nordic Musculoskeletal Questionnaire (NMQ) to Measure Musculoskeletal Disorders (MSD) in Traditional Women Weavers. Global Medical & Health Communication (GMHC), 7(2), 123–130. https://doi.org/10.29313/gmhc.v7i2.4132
 
 Setyanto, N. W., Efranto, R., Lukodono, R. P., & Dirawidya, A. (2015). Ergonomics Analysis in the Scarfing Process by OWAS, NIOSH and Nordic Body Map’s Method at Slab Steel Plant’s Division. International Journal of Innovative Research in Science, Engineering and Technology, 2006, 1086–1093. https://doi.org/10.15680/IJIRSET.2015.0403060
+""";
+
+
+/// ---------------------------------------------
+/// NMQ
+/// ---------------------------------------------
+const String infoOdi = """
+Oswestry Disability Index (juga dikenal sebagai Oswestry Low Back Pain Disability Questionnaire) adalah alat yang digunakan oleh peneliti dan disability evaluators untuk mengukur tingkat fungsi (disability) sejauh mana nyeri punggung bawah berdampak dalam aktivitas sehari-hari. Kuisioner ini telah dianggap sebagai “gold standard” dari low back functional outcome tools. Pengembangan Oswestry Disability Index (ODI) diprakarsai oleh John O'Brien pada tahun 1976. Kuesioner tervalidasi ini pertama kali diterbitkan oleh Jeremy Fairbank et al. dalam Fisioterapi pada tahun 1980. Versi saat ini diterbitkan dalam jurnal Spine pada tahun 2000.
+""";
+const String infoOdiRef = """
+Referensi :
+Alcántara-Bumbiedro, S., Flórez-García, M. T., Echávarri-Pérez, C., & García-Pérez, F. (2006). Oswestry low back pain disability questionnaire. Rehabilitacion, 40(3), 150–158. https://doi.org/10.1016/S0048-7120(06)74881-2
+
+Fairbank, J. C. T., & Pynsent, P. B. (2000). Questionário de Deficiência da Dor Lombar Oswestry. Coluna, 25(22), 2940–2953.
+
+Life, S. (2014). Oswestry Low Back Disability Questionnaire. Encyclopedia of Quality of Life and Well-Being Research, 4537–4537. https://doi.org/10.1007/978-94-007-0753-5_102854
+
+https://www.physio-pedia.com/Oswestry_Disability_Index
+
+https://www.sralab.org/rehabilitation-measures/oswestry-disability-index
+
+https://en.wikipedia.org/wiki/Oswestry_Disability_Index
 """;
 

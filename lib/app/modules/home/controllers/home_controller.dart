@@ -50,8 +50,8 @@ class HomeController extends GetxController {
       FeatureModel(
         id: 7,
         name: odi,
-        route: '',
-        actived: false,
+        route: Routes.ODI,
+        actived: true,
       ),
       FeatureModel(
         id: 8,
