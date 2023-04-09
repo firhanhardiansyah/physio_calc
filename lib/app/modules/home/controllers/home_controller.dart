@@ -68,8 +68,8 @@ class HomeController extends GetxController {
       FeatureModel(
         id: 10,
         name: womac,
-        route: '',
-        actived: false,
+        route: Routes.WOMAC,
+        actived: true,
       ),
     ]);
   }
