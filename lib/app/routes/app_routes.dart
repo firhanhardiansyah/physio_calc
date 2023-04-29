@@ -14,6 +14,7 @@ abstract class Routes {
   static const NMQ = _Paths.NMQ;
   static const ODI = _Paths.ODI;
   static const WOMAC = _Paths.WOMAC;
+  static const PCS = _Paths.PCS;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const NMQ = '/nmq';
   static const ODI = '/odi';
   static const WOMAC = '/womac';
+  static const PCS = '/pcs';
 }

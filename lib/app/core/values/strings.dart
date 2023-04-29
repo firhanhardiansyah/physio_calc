@@ -152,9 +152,27 @@ https://en.wikipedia.org/wiki/Oswestry_Disability_Index
 
 const String pcs = "Pediatric Coma Scale (PCS)";
 const String infoPcs = """
+Skor Pediatric Coma Scale (PCS) adalah skor Glasgow Coma Scale (GCS) yang dimodifikasi untuk digunakan pada anak preverbal. Penilaian status neurologis lebih rumit dipopulasi pediatrik karena kesulitan dalam menilai respon terhadap berbagai rangsangan.
+
+Anak-anak memiliki sistem saraf yang belum berkembang sempurna, dan prognosis TBI dibuat lebih kompleks oleh variasi anatomis dan fisiologis yang membedakan anak-anak dari orang dewasa. Dengan demikian, GCS dimodifikasi untuk digunakan pada pasien anak.
+
+Pediatric Coma Scale (PCS) menggunakan modifikasi sesuai usia untuk menjelaskan perbedaan perkembangan dalam kemampuan verbal, motorik, dan kognitif. skor PCS  pada anak-anak < 2 tahun lebih baik dibandingkan dengan GCS standar ketika digunakan untuk evaluasi trauma kepala tumpul pada anak yang lebih tua.Kategori tingkat kesadaran yang normal pada anak dengan PCS didasarkan pada rentang umur :
+  •	Nilai normal usia 0 - 6 bulan : 9
+  •	Nilai normal usia 6 - 12 bulan : 11
+  •	Nilai normal usia 1 - 2 tahun : 12
+  •	Nilai normal usia 2 - 5 tahun : 13
+  •	Nilai normal usia > 5 tahun : 14
 """;
 const String infoPcsRef = """
 Referensi :
+Borgialli, D. A., Mahajan, P., Hoyle, J. D., Powell, E. C., Nadel, F. M., Tunik, M. G., Foerster, A., Dong, L., Miskin, M., Dayan, P. S., Holmes, J. F.,
+Kuppermann, N., Gerardi, M., Tunik, M., Tsung, J., Melville, K., Lee, L., Mahajan, P., Dayan, P., … Lillis, K. (2016). Performance of the Pediatric Glasgow Coma Scale Score in the Evaluation of Children With Blunt Head Trauma. Academic Emergency Medicine, 23(8), 878–884.
+https://doi.org/10.1111/acem.13014
+Vedantam, A., Gopinath, S. P., & Robertson, C. S. (2018). Acute Management of Traumatic Brain Injury. Rehabilitation After Traumatic Brain Injury, 1–11.
+https://doi.org/10.1016/B978-0-323-54456-6.00001-3
+Herawati, I., & wahyuni. (2017). Pemeriksaan Fisioterapi. Muhammadiyah University Press.
+https://en.wikipedia.org/wiki/Paediatric_Glasgow_Coma_Scale
+https://www.physio-pedia.com/index.php?title=Traumatic_Brain_Injury_in_Paediatrics&veaction=edit&section=1
 """;
 
 const String uefs = "Upper Extremity Functional Scale (UEFS)";

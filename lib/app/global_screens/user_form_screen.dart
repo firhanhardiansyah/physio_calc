@@ -10,11 +10,18 @@ import 'package:physio_calc/app/global_widgets/field_spacer.dart';
 import 'package:intl/intl.dart';
 
 class UserFormScreen extends StatelessWidget {
-  const UserFormScreen({super.key, required this.callback, this.fields});
+  const UserFormScreen({
+    super.key,
+    required this.callback,
+    this.fields,
+    this.ageCustom,
+  });
 
   final String errorText = 'Tidak boleh kosong';
   final Function(GlobalKey<FormBuilderState>) callback;
   final List<Widget>? fields;
+
+  final Widget? ageCustom;
 
   @override
   Widget build(BuildContext context) {
@@ -40,22 +47,26 @@ class UserFormScreen extends StatelessWidget {
               initialValue: 'User Testing',
             ),
             const FieldSpacer(),
-            FormBuilderTextField(
-              name: 'age',
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              decoration: const InputDecoration(
-                label: Text('Usia'),
+            if (ageCustom != null) ...{
+              ageCustom!
+            } else ...{
+              FormBuilderTextField(
+                name: 'age',
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                decoration: const InputDecoration(
+                  label: Text('Usia'),
+                ),
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.required(errorText: errorText),
+                  FormBuilderValidators.numeric(),
+                  FormBuilderValidators.max(200),
+                ]),
+                keyboardType: TextInputType.number,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                textInputAction: TextInputAction.next,
+                initialValue: '23',
               ),
-              validator: FormBuilderValidators.compose([
-                FormBuilderValidators.required(errorText: errorText),
-                FormBuilderValidators.numeric(),
-                FormBuilderValidators.max(200),
-              ]),
-              keyboardType: TextInputType.number,
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              textInputAction: TextInputAction.next,
-              initialValue: '23',
-            ),
+            },
             const FieldSpacer(),
             FormBuilderDropdown(
               name: 'gender',

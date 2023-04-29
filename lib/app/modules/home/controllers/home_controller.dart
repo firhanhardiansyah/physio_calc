@@ -56,8 +56,8 @@ class HomeController extends GetxController {
       FeatureModel(
         id: 8,
         name: pcs,
-        route: '',
-        actived: false,
+        route: Routes.PCS,
+        actived: true,
       ),
       FeatureModel(
         id: 9,
