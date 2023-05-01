@@ -20,7 +20,6 @@ class UgoFischScaleController extends GetxController {
 
   List<UgoFischScaleFieldModel> listFields = [];
 
-
   AutovalidateMode autoValidate = AutovalidateMode.disabled;
 
   Map<String, FormBuilderFieldState> get _fields =>
