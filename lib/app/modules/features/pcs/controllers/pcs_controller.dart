@@ -175,7 +175,7 @@ class PcsController extends GetxController implements QuestionnaireController {
                               ),
                               pw.Text(':'),
                               pw.Text(
-                                  '${userInformation?['age_in_months']} Bulan / ${userInformation?['age_in_years']} Tahun'),
+                                  '${userInformation?['age_custom']}'),
                               pw.Center(
                                 child: pw.Text(
                                     '${userInformation?['examination_date']}'),

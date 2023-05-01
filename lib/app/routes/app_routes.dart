@@ -15,6 +15,7 @@ abstract class Routes {
   static const ODI = _Paths.ODI;
   static const WOMAC = _Paths.WOMAC;
   static const PCS = _Paths.PCS;
+  static const UEFI = _Paths.UEFI;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const ODI = '/odi';
   static const WOMAC = '/womac';
   static const PCS = '/pcs';
+  static const UEFI = '/uefi';
 }

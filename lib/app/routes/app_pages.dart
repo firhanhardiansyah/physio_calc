@@ -14,6 +14,8 @@ import '../modules/features/odi/bindings/odi_binding.dart';
 import '../modules/features/odi/views/odi_view.dart';
 import '../modules/features/pcs/bindings/pcs_binding.dart';
 import '../modules/features/pcs/views/pcs_view.dart';
+import '../modules/features/uefi/bindings/uefi_binding.dart';
+import '../modules/features/uefi/views/uefi_view.dart';
 import '../modules/features/ugo_fisch_scale/bindings/ugo_fisch_scale_binding.dart';
 import '../modules/features/ugo_fisch_scale/views/ugo_fisch_scale_view.dart';
 import '../modules/features/womac/bindings/womac_binding.dart';
@@ -80,6 +82,11 @@ class AppPages {
       name: _Paths.PCS,
       page: () => const PcsView(),
       binding: PcsBinding(),
+    ),
+    GetPage(
+      name: _Paths.UEFI,
+      page: () => const UefiView(),
+      binding: UefiBinding(),
     ),
   ];
 }

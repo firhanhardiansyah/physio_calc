@@ -61,9 +61,9 @@ class HomeController extends GetxController {
       ),
       FeatureModel(
         id: 9,
-        name: uefs,
-        route: '',
-        actived: false,
+        name: uefi,
+        route: Routes.UEFI,
+        actived: true,
       ),
       FeatureModel(
         id: 10,

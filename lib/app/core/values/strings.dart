@@ -175,11 +175,24 @@ https://en.wikipedia.org/wiki/Paediatric_Glasgow_Coma_Scale
 https://www.physio-pedia.com/index.php?title=Traumatic_Brain_Injury_in_Paediatrics&veaction=edit&section=1
 """;
 
-const String uefs = "Upper Extremity Functional Scale (UEFS)";
-const String infoUefs = """
+const String uefi = "Upper Extremity Functional Index (UEFI)";
+const String infoUefi = """
+Upper Extremity Functional Index (UEFI) dikembangkan oleh Paul Stratford dan rekannya pada tahun 2001. Saat ini UEFI memiliki 2 versi yaitu UEFI-20 dan UEFI-15. UEFI-20 yaitu item asli yang belum menjalani validasi Rasch.
+
+UEFI 15-item yang dimodifikasi diturunkan agar sesuai dengan model Rasch di mana skor total didukung hanya sebagai ukuran fungsi ekstremitas atas. Validitas untuk UEFI-20 dan UEFI-15 adalah sama (ICC=0,94 untuk kedua pengukuran).
+
+Analisis Rasch mendukung penggunaan UEFI-15 dalam praktik fisioterapis untuk mengukur fungsi ekstremitas atas pada pasien dengan gangguan muskuloskeletal ekstremitas atas. UEFI-15 direkomendasikan karena hanya mengukur satu dimensi: fungsi dari Upper Extremity.
 """;
-const String infoUefsRef = """
+const String infoUefiRef = """
 Referensi :
+Arumugam, V., & MacDermid, J. C. (2018). Clinimetrics: Upper Extremity Functional Index. Journal of Physiotherapy, 64(2), 125.
+https://doi.org/10.1016/j.jphys.2018.01.003
+
+Chesworth, B. M., Hamilton, C. B., Walton, D. M., Benoit, M., Blake, T. A., Bredy, H., Burns, C., Chan, L., Frey, E., Gillies, G., Gravelle, T., Ho, R., Holmes, R., Lavallée, R. L. J., Mackinnon, M., Merchant, A. J., Sherman, T., Spears, K., & Yardley, D. (2014). Reliability and validity of two versions of the upper extremity functional index. Physiotherapy Canada, 66(3), 243–253. https://doi.org/10.3138/ptc.2013-45
+
+Hamilton, C. B., & Chesworth, B. M. (2013). A rasch-validated version of the upper extremity functional index for interval-level measurement of upper extremity function. Physical Therapy, 93(11), 1507–1519. https://doi.org/10.2522/ptj.20130041
+
+https://www.physio-pedia.com/Upper_Extremity_Functional_Index
 """;
 
 const String womac =

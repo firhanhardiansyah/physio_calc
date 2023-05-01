@@ -10,10 +10,10 @@ import 'package:physio_calc/app/global_screens/user_form_screen.dart';
 import 'package:physio_calc/app/global_widgets/appbar_custom.dart';
 import 'package:physio_calc/app/global_widgets/form_builder_custom.dart';
 
-import '../controllers/pcs_controller.dart';
+import '../controllers/uefi_controller.dart';
 
-class PcsView extends GetView<PcsController> {
-  const PcsView({Key? key}) : super(key: key);
+class UefiView extends GetView<UefiController> {
+  const UefiView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,26 +55,7 @@ class PcsView extends GetView<PcsController> {
                 'User Information',
                 style: TextsTheme.textLg,
               ),
-              content: UserFormScreen(
-                  ageCustom: Column(
-                    children: [
-                      FormBuilderTextField(
-                        name: 'age_custom',
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        decoration: const InputDecoration(
-                          label: Text('Usia'),
-                          hintText: 'Ex: 3 bulan atau 2 tahun'
-                        ),
-                        validator: FormBuilderValidators.compose([
-                          FormBuilderValidators.required(
-                              errorText: 'Tidak boleh kosong'),
-                        ]),
-                        textInputAction: TextInputAction.next,
-                        // initialValue: '2',
-                      ),
-                    ],
-                  ),
-                  callback: controller.onSavePdf),
+              content: UserFormScreen(callback: controller.onSavePdf),
             ));
           },
           onReset: () {
@@ -88,9 +69,12 @@ class PcsView extends GetView<PcsController> {
                   text: TextSpan(
                     style: const TextStyle(color: Colors.black),
                     children: [
-                      const TextSpan(text: infoPcs),
+                      const TextSpan(text: infoUefi),
                       const TextSpan(text: '\n\n'),
-                      TextSpan(text: infoPcsRef, style: TextsTheme.textXxs),
+                      TextSpan(
+                        text: infoUefiRef,
+                        style: TextsTheme.textXxs,
+                      ),
                     ],
                   ),
                 ),
@@ -123,7 +107,7 @@ class PcsView extends GetView<PcsController> {
                           Flexible(
                             flex: 3,
                             child: Text(
-                              '${formField.fieldId} - ${formField.fieldLabel}',
+                              '${formField.fieldId}. ${formField.fieldLabel}',
                               style: TextsTheme.textBaseBold,
                             ),
                           ),

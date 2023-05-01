@@ -44,7 +44,7 @@ class UserFormScreen extends StatelessWidget {
                 FormBuilderValidators.required(errorText: errorText),
               ]),
               textInputAction: TextInputAction.next,
-              initialValue: 'User Testing',
+              // initialValue: 'User Testing',
             ),
             const FieldSpacer(),
             if (ageCustom != null) ...{
@@ -64,7 +64,7 @@ class UserFormScreen extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 textInputAction: TextInputAction.next,
-                initialValue: '23',
+                // initialValue: '23',
               ),
             },
             const FieldSpacer(),
@@ -83,7 +83,7 @@ class UserFormScreen extends StatelessWidget {
                         child: Text(gender),
                       ))
                   .toList(),
-              initialValue: 'Laki - Laki',
+              // initialValue: 'Laki - Laki',
             ),
             if (fields != null) ...{
               Column(
@@ -100,7 +100,7 @@ class UserFormScreen extends StatelessWidget {
               name: 'examination_date',
               autovalidateMode: AutovalidateMode.onUserInteraction,
               initialEntryMode: DatePickerEntryMode.calendarOnly,
-              initialValue: DateTime.now(),
+              // initialValue: DateTime.now(),
               inputType: InputType.both,
               decoration:
                   const InputDecoration(label: Text('Tanggal Pemeriksaan')),
