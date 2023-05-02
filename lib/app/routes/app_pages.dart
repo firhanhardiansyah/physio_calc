@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/about/bindings/about_binding.dart';
+import '../modules/about/views/about_view.dart';
 import '../modules/features/barthel_index/bindings/barthel_index_binding.dart';
 import '../modules/features/barthel_index/views/barthel_index_view.dart';
 import '../modules/features/bbs/bindings/bbs_binding.dart';
@@ -87,6 +89,11 @@ class AppPages {
       name: _Paths.UEFI,
       page: () => const UefiView(),
       binding: UefiBinding(),
+    ),
+    GetPage(
+      name: _Paths.ABOUT,
+      page: () => const AboutView(),
+      binding: AboutBinding(),
     ),
   ];
 }

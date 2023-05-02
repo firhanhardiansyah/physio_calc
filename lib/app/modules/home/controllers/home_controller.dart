@@ -77,4 +77,8 @@ class HomeController extends GetxController {
   void goToPage(FeatureModel feature) {
     Get.toNamed(feature.route, parameters: {'name': feature.name});
   }
+
+  void goToAbout() {
+    Get.toNamed(Routes.ABOUT);
+  }
 }

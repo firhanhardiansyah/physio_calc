@@ -16,6 +16,7 @@ abstract class Routes {
   static const WOMAC = _Paths.WOMAC;
   static const PCS = _Paths.PCS;
   static const UEFI = _Paths.UEFI;
+  static const ABOUT = _Paths.ABOUT;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const WOMAC = '/womac';
   static const PCS = '/pcs';
   static const UEFI = '/uefi';
+  static const ABOUT = '/about';
 }

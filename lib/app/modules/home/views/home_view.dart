@@ -17,21 +17,22 @@ class HomeView extends GetView<HomeController> {
           appBar: AppBar(
             title: const Text(appName),
             actions: [
-              IconButton(
-                  onPressed: () {
-                    Get.dialog(AlertDialog(
-                      title: const Text('Tentang Aplikasi'),
-                      content: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: const [
-                          Text(appDescription),
-                          // const SizedBox(height: 24.0),
-                          // Text('Firhan Hardiansyah'),
-                        ],
-                      ),
-                    ));
-                  },
-                  icon: const Icon(Icons.info_outline))
+              IconButton(onPressed: controller.goToAbout, icon: const Icon(Icons.info_outline))
+              // IconButton(
+              //     onPressed: () {
+              //       Get.dialog(AlertDialog(
+              //         title: const Text('Tentang Aplikasi'),
+              //         content: Column(
+              //           mainAxisSize: MainAxisSize.min,
+              //           children: const [
+              //             Text(appDescription),
+              //             // const SizedBox(height: 24.0),
+              //             // Text('Firhan Hardiansyah'),
+              //           ],
+              //         ),
+              //       ));
+              //     },
+              //     icon: const Icon(Icons.info_outline))
             ],
           ),
           body: ListView.builder(

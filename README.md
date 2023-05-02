@@ -67,5 +67,5 @@ flutter pub run build_runner build --delete-conflicting-outputs
 - Icon with flavor
 - Demo
 ```
-flutter pub run flutter_launcher_icons -f flutter_launcher_icons_demo.yaml
+flutter pub run flutter_launcher_icons -f flutter_launcher_icon.yaml
 ```

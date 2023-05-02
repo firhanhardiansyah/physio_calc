@@ -10,10 +10,13 @@ scripts:
   uninstall: adb shell && pm uninstall org.tether.tether # (sometimes doesn't uninstall when debugging?)
   # format: flutter dartfmt --line-length=120 .
 
+  # generate icon launcher
+  generate-icon: flutter pub run flutter_launcher_icons -f flutter_launcher_icon.yaml
+
   build-release-ios: flutter build ipa  --release # open under xcworkspace, not xcodeproj
 
-  build-android-release: flutter pub run build_runner build --delete-conflicting-outputs && flutter build apk --release
-  build-android-demo: flutter pub run build_runner build --delete-conflicting-outputs && flutter build apk --flavor demo -t lib/main_demo.dart --release
+  build-android-release: flutter build apk --flavor prod -t lib/main_prod.dart --release
+  build-android-demo: flutter build apk --flavor demo -t lib/main_demo.dart --release
 
   # mobile development commands
   setup-ios: pod install && flutter precache --ios
@@ -34,3 +37,4 @@ scripts:
   init-platform-dirs: flutter create --org org.tether.tether
   enable-desktop: flutter config --enable-macos-desktop --enable-linux-desktop # --no-enable-<type>-desktop
 
+  
