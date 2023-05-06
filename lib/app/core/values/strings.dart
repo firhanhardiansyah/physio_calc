@@ -1,7 +1,7 @@
 /// Application Name & Description
 const String appName = "Physiotherapy Calculators";
 const String appDescription =
-    "Physiotherapy calculator adalah aplikasi pengukuran fisioterapi yang akan membantu fisioterapis dalam melakukan pemeriksaan pada pasien serta bertujuan untuk meningkatakan akurasi diagnosis fisioterapi";
+    "Physiotherapy calculator adalah aplikasi pengukuran fisioterapi yang akan membantu fisioterapis dalam melakukan pemeriksaan pada pasien serta bertujuan untuk meningkatakan akurasi diagnosis fisioterapi.";
 
 /// ---------------------------------------------
 /// Ugo Fisch Scale
