@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/values/strings.dart';
@@ -9,7 +6,7 @@ import 'package:physio_calc/app/core/values/strings.dart';
 import '../controllers/about_controller.dart';
 
 class AboutView extends GetView<AboutController> {
-  const AboutView({Key? key}) : super(key: key);
+  const AboutView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,11 +42,11 @@ class AboutView extends GetView<AboutController> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Rahma Alfina', style: TextsTheme.textSmBold),
+                    Text('R**** A****', style: TextsTheme.textSmBold),
                     const SizedBox(height: 8.0),
                     GestureDetector(
-                      onTap: () => controller.mailTo(
-                          email: 'j120200032@student.ums.ac.id'),
+                      onTap: () =>
+                          controller.mailTo(email: '****@****.**.**.id'),
                       child: RichText(
                         text: TextSpan(
                             text: 'Email : ',
@@ -58,7 +55,7 @@ class AboutView extends GetView<AboutController> {
                                 fontSize: TextsTheme.sizeTextXs),
                             children: [
                               TextSpan(
-                                text: 'j120200032@student.ums.ac.id',
+                                text: '****@****.**.**.id',
                                 style: TextStyle(color: Colors.blue.shade900),
                               )
                             ]),
@@ -72,7 +69,7 @@ class AboutView extends GetView<AboutController> {
                               color: Colors.black87,
                               fontSize: TextsTheme.sizeTextXs),
                           children: const [
-                            TextSpan(text: '+62 812 3802 3491')
+                            TextSpan(text: '+62 812 **** ****')
                           ]),
                     ),
                   ],
@@ -81,10 +78,10 @@ class AboutView extends GetView<AboutController> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Adnan Faris Naufal', style: TextsTheme.textSmBold),
+                    Text('A**** F**** N****', style: TextsTheme.textSmBold),
                     const SizedBox(height: 8.0),
                     GestureDetector(
-                      onTap: () => controller.mailTo(email: 'afn778@ums.ac.id'),
+                      onTap: () => controller.mailTo(email: '****@****.**.id'),
                       child: RichText(
                         text: TextSpan(
                             text: 'Email : ',
@@ -93,7 +90,7 @@ class AboutView extends GetView<AboutController> {
                                 fontSize: TextsTheme.sizeTextXs),
                             children: [
                               TextSpan(
-                                text: 'afn778@ums.ac.id',
+                                text: '****@****.**.id',
                                 style: TextStyle(color: Colors.blue.shade900),
                               )
                             ]),
@@ -107,7 +104,7 @@ class AboutView extends GetView<AboutController> {
                               color: Colors.black87,
                               fontSize: TextsTheme.sizeTextXs),
                           children: const [
-                            TextSpan(text: '+62 812 2868 6790')
+                            TextSpan(text: '+62 812 **** ****')
                           ]),
                     ),
                   ],
@@ -147,7 +144,7 @@ class AboutView extends GetView<AboutController> {
                       style: TextStyle(
                           color: Colors.black87,
                           fontSize: TextsTheme.sizeTextXs),
-                      children: const [TextSpan(text: '+62 851 5623 6732')]),
+                      children: const [TextSpan(text: '+62 859 5134 6453')]),
                 ),
               ],
             ),
@@ -160,14 +157,20 @@ class AboutView extends GetView<AboutController> {
           child: Column(
             children: [
               GetBuilder(
-                init: controller,
-                builder: (controller) {
-                  return RichText(
-                    text: TextSpan(text: '${controller.appName}, Version : ${controller.version}', style: TextsTheme.textXs.copyWith(color: Colors.black87)));
-                }
-              ),
+                  init: controller,
+                  builder: (controller) {
+                    return RichText(
+                        text: TextSpan(
+                            text:
+                                '${controller.appName}, Version : ${controller.version}',
+                            style: TextsTheme.textXs
+                                .copyWith(color: Colors.black87)));
+                  }),
               RichText(
-                text: TextSpan(text: '© Copyright 2023. All Rights Reserved', style: TextsTheme.textXsBold.copyWith(color: Colors.black87))),
+                  text: TextSpan(
+                      text: '© Copyright 2023. All Rights Reserved',
+                      style: TextsTheme.textXsBold
+                          .copyWith(color: Colors.black87))),
             ],
           ),
         ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
 import 'package:get/get.dart';
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/utils/helpers/popup_helper.dart';
@@ -14,7 +13,7 @@ import 'package:physio_calc/app/global_widgets/form_builder_custom.dart';
 import '../controllers/pcs_controller.dart';
 
 class PcsView extends GetView<PcsController> {
-  const PcsView({Key? key}) : super(key: key);
+  const PcsView({super.key});
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -52,7 +51,7 @@ class PcsView extends GetView<PcsController> {
                 );
                 return;
               }
-    
+
               Get.dialog(AlertDialog(
                 title: Text(
                   'User Information',
@@ -65,9 +64,8 @@ class PcsView extends GetView<PcsController> {
                           name: 'age_custom',
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           decoration: const InputDecoration(
-                            label: Text('Usia'),
-                            hintText: 'Ex: 3 bulan atau 2 tahun'
-                          ),
+                              label: Text('Usia'),
+                              hintText: 'Ex: 3 bulan atau 2 tahun'),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(
                                 errorText: 'Tidak boleh kosong'),
@@ -113,7 +111,7 @@ class PcsView extends GetView<PcsController> {
                 itemCount: controller.formFieldsModel.length,
                 itemBuilder: (context, index) {
                   final formField = controller.formFieldsModel[index];
-    
+
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: Column(

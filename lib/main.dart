@@ -2,13 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:physio_calc/app/core/themes/app_theme.dart';
 
 import 'app/routes/app_pages.dart';
-
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +26,7 @@ class MyApp extends StatelessWidget {
         systemNavigationBarDividerColor: Colors.black,
       ),
       child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
         title: "Physio Calc",
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,

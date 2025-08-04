@@ -1,20 +1,17 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
+import 'package:open_filex/open_filex.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/values/questions/mmse_question.dart';
 import 'package:physio_calc/app/core/values/strings.dart';
 import 'package:physio_calc/app/data/models/form_field_model/form_field_model.dart';
-
-import 'package:flutter/services.dart';
-
-import 'package:open_file_plus/open_file_plus.dart';
-import 'package:path_provider/path_provider.dart';
-
-import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;
 
 class MmseController extends GetxController {
   final appBarTitle = ''.obs;
@@ -241,7 +238,7 @@ class MmseController extends GetxController {
     final file = File('${directory.path}/Result $mmse.pdf');
 
     await file.writeAsBytes(bytes);
-    await OpenFile.open(file.path);
+    await OpenFilex.open(file.path);
     Get.back();
   }
 

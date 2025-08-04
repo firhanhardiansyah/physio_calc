@@ -17,6 +17,7 @@ abstract class Routes {
   static const PCS = _Paths.PCS;
   static const UEFI = _Paths.UEFI;
   static const ABOUT = _Paths.ABOUT;
+  static const SPLASH = _Paths.SPLASH;
 }
 
 abstract class _Paths {
@@ -33,4 +34,5 @@ abstract class _Paths {
   static const PCS = '/pcs';
   static const UEFI = '/uefi';
   static const ABOUT = '/about';
+  static const SPLASH = '/splash';
 }

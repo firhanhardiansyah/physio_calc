@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
 import 'package:get/get.dart';
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/utils/helpers/popup_helper.dart';
@@ -14,7 +13,7 @@ import 'package:physio_calc/app/global_widgets/form_builder_custom.dart';
 import '../controllers/gcs_controller.dart';
 
 class GcsView extends GetView<GcsController> {
-  const GcsView({Key? key}) : super(key: key);
+  const GcsView({super.key});
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -48,7 +47,7 @@ class GcsView extends GetView<GcsController> {
                 );
                 return;
               }
-    
+
               Get.dialog(AlertDialog(
                 title: Text(
                   'User Information',
@@ -94,7 +93,7 @@ class GcsView extends GetView<GcsController> {
                   itemCount: controller.formFieldsModel.length,
                   itemBuilder: (context, index) {
                     final formField = controller.formFieldsModel[index];
-    
+
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 16.0),
                       child: Column(
@@ -156,8 +155,8 @@ class GcsView extends GetView<GcsController> {
                             autovalidateMode: controller.autoValidate,
                             validator: FormBuilderValidators.required(
                                 errorText: 'Harap dipilih salah satu'),
-                            onChanged: (value) =>
-                                controller.onChanged(index: index, value: value),
+                            onChanged: (value) => controller.onChanged(
+                                index: index, value: value),
                           )
                         ],
                       ),

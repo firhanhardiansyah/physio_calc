@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
 import 'package:get/get.dart';
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/utils/helpers/popup_helper.dart';
@@ -14,7 +13,7 @@ import 'package:physio_calc/app/global_widgets/form_builder_custom.dart';
 import '../controllers/bbs_controller.dart';
 
 class BbsView extends GetView<BbsController> {
-  const BbsView({Key? key}) : super(key: key);
+  const BbsView({super.key});
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -48,7 +47,7 @@ class BbsView extends GetView<BbsController> {
                 );
                 return;
               }
-    
+
               Get.dialog(AlertDialog(
                 title: Text(
                   'User Information',
@@ -94,7 +93,7 @@ class BbsView extends GetView<BbsController> {
                   itemCount: controller.formFieldsModel.length,
                   itemBuilder: (context, index) {
                     final formField = controller.formFieldsModel[index];
-    
+
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 16.0),
                       child: Column(
@@ -158,8 +157,8 @@ class BbsView extends GetView<BbsController> {
                             //     AutovalidateMode.onUserInteraction,
                             validator: FormBuilderValidators.required(
                                 errorText: 'Harap dipilih salah satu'),
-                            onChanged: (value) =>
-                                controller.onChanged(index: index, value: value),
+                            onChanged: (value) => controller.onChanged(
+                                index: index, value: value),
                           )
                         ],
                       ),

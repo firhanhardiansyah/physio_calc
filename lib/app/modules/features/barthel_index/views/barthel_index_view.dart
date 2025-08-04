@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
+import 'package:get/get.dart';
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/utils/helpers/popup_helper.dart';
 import 'package:physio_calc/app/core/values/strings.dart';
@@ -14,7 +12,7 @@ import 'package:physio_calc/app/global_widgets/appbar_custom.dart';
 import '../controllers/barthel_index_controller.dart';
 
 class BarthelIndexView extends GetView<BarthelIndexController> {
-  const BarthelIndexView({Key? key}) : super(key: key);
+  const BarthelIndexView({super.key});
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -48,7 +46,7 @@ class BarthelIndexView extends GetView<BarthelIndexController> {
                 );
                 return;
               }
-    
+
               Get.dialog(AlertDialog(
                 title: Text(
                   'User Information',
@@ -94,7 +92,7 @@ class BarthelIndexView extends GetView<BarthelIndexController> {
                     itemCount: controller.listFields.length,
                     itemBuilder: (context, index) {
                       final listField = controller.listFields[index];
-    
+
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 16.0),
                         child: Column(
@@ -153,8 +151,7 @@ class BarthelIndexView extends GetView<BarthelIndexController> {
                               decoration: const InputDecoration(
                                 contentPadding: EdgeInsets.only(right: 8.0),
                               ),
-                              autovalidateMode:
-                                  controller.autoValidate,
+                              autovalidateMode: controller.autoValidate,
                               // autovalidateMode:
                               //     AutovalidateMode.onUserInteraction,
                               validator: FormBuilderValidators.compose([

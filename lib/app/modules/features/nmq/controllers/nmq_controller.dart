@@ -1,21 +1,18 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
+import 'package:open_filex/open_filex.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/utils/abstracts/questionnaire_controller.dart';
 import 'package:physio_calc/app/core/values/questions/nmq_question.dart';
 import 'package:physio_calc/app/core/values/strings.dart';
 import 'package:physio_calc/app/data/models/form_field_model/form_field_model.dart';
-
-import 'package:flutter/services.dart';
-
-import 'package:open_file_plus/open_file_plus.dart';
-import 'package:path_provider/path_provider.dart';
-
-import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;
 
 class NmqController extends GetxController implements QuestionnaireController {
   final appBarTitle = ''.obs;
@@ -241,10 +238,8 @@ class NmqController extends GetxController implements QuestionnaireController {
               ],
             ),
             pw.SizedBox(height: 20.0),
-
             pw.Container(
                 width: double.infinity, height: 1, color: PdfColors.black),
-
             pw.Container(
               alignment: pw.Alignment.center,
               padding: const pw.EdgeInsets.only(top: 12.0, right: 8.0),
@@ -253,7 +248,6 @@ class NmqController extends GetxController implements QuestionnaireController {
                 height: 320.0,
               ),
             ),
-
             pw.Table.fromTextArray(
               border: pw.TableBorder.all(),
               cellAlignments: {
@@ -292,9 +286,7 @@ class NmqController extends GetxController implements QuestionnaireController {
                 ),
               ),
             ),
-
             pw.SizedBox(height: 20.0),
-
             pw.Row(children: [
               pw.Expanded(
                 flex: 2,
@@ -321,7 +313,6 @@ class NmqController extends GetxController implements QuestionnaireController {
               ),
               pw.Expanded(child: pw.SizedBox()),
             ]),
-
             pw.SizedBox(height: 20.0),
             pw.Row(
               crossAxisAlignment: pw.CrossAxisAlignment.end,
@@ -373,7 +364,7 @@ class NmqController extends GetxController implements QuestionnaireController {
     final file = File('${directory.path}/Result $nmq.pdf');
 
     await file.writeAsBytes(bytes);
-    await OpenFile.open(file.path);
+    await OpenFilex.open(file.path);
     Get.back();
   }
 

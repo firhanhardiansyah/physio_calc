@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
 import 'package:get/get.dart';
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/utils/helpers/popup_helper.dart';
@@ -13,7 +12,7 @@ import 'package:physio_calc/app/global_widgets/field_spacer.dart';
 import '../controllers/ugo_fisch_scale_controller.dart';
 
 class UgoFischScaleView extends GetView<UgoFischScaleController> {
-  const UgoFischScaleView({Key? key}) : super(key: key);
+  const UgoFischScaleView({super.key});
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -47,7 +46,7 @@ class UgoFischScaleView extends GetView<UgoFischScaleController> {
                 );
                 return;
               }
-    
+
               Get.dialog(AlertDialog(
                 title: Text(
                   'User Information',
@@ -93,7 +92,7 @@ class UgoFischScaleView extends GetView<UgoFischScaleController> {
                     physics: const ScrollPhysics(),
                     itemBuilder: (context, index) {
                       final listField = controller.listFields[index];
-    
+
                       return Column(
                         children: [
                           Flex(
@@ -104,10 +103,10 @@ class UgoFischScaleView extends GetView<UgoFischScaleController> {
                                 flex: 3,
                                 child: FormBuilderRadioGroup<String>(
                                   name: listField.name,
-                                  decoration:
-                                      InputDecoration(labelText: listField.label),
-                                  onChanged: (value) => controller.onChangeField(
-                                      value, listField, index),
+                                  decoration: InputDecoration(
+                                      labelText: listField.label),
+                                  onChanged: (value) => controller
+                                      .onChangeField(value, listField, index),
                                   options: ['0%', '30%', '70%', '100%']
                                       .map((val) => FormBuilderFieldOption(
                                             value: val,
@@ -116,7 +115,7 @@ class UgoFischScaleView extends GetView<UgoFischScaleController> {
                                       .toList(growable: false),
                                   valueTransformer: (value) {
                                     if (value == null) return value;
-    
+
                                     final splitted = value.split('%');
                                     final result = int.parse(splitted[0]);
                                     return result;
@@ -146,7 +145,7 @@ class UgoFischScaleView extends GetView<UgoFischScaleController> {
                                     if (value == null || value == '-') {
                                       return value;
                                     }
-    
+
                                     final result = int.parse(value);
                                     return result;
                                   },

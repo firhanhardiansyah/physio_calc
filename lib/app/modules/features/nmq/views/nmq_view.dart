@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
 import 'package:get/get.dart';
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/utils/helpers/popup_helper.dart';
@@ -15,7 +14,7 @@ import 'package:physio_calc/app/global_widgets/my_handle_drag.dart';
 import '../controllers/nmq_controller.dart';
 
 class NmqView extends GetView<NmqController> {
-  const NmqView({Key? key}) : super(key: key);
+  const NmqView({super.key});
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -53,7 +52,7 @@ class NmqView extends GetView<NmqController> {
                 );
                 return;
               }
-    
+
               Get.dialog(
                 GestureDetector(
                   onTap: () {
@@ -147,7 +146,7 @@ class NmqView extends GetView<NmqController> {
                     itemCount: controller.formFieldsModel.length,
                     itemBuilder: (context, index) {
                       final formField = controller.formFieldsModel[index];
-    
+
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 16.0),
                         child: Column(

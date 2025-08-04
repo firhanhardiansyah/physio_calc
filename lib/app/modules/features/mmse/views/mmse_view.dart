@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-
 import 'package:get/get.dart';
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/utils/helpers/popup_helper.dart';
@@ -13,7 +12,7 @@ import 'package:physio_calc/app/global_widgets/form_builder_custom.dart';
 import '../controllers/mmse_controller.dart';
 
 class MmseView extends GetView<MmseController> {
-  const MmseView({Key? key}) : super(key: key);
+  const MmseView({super.key});
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -51,7 +50,7 @@ class MmseView extends GetView<MmseController> {
                 );
                 return;
               }
-    
+
               Get.dialog(AlertDialog(
                 title: Text(
                   'User Information',
@@ -96,14 +95,14 @@ class MmseView extends GetView<MmseController> {
                 itemCount: controller.questions.length,
                 itemBuilder: (context, index) {
                   final question = controller.questions[index];
-    
+
                   List<Widget> subQuestion = [];
-    
+
                   for (var fieldIndex = 0;
                       fieldIndex < question.fields.length;
                       fieldIndex++) {
                     FormFieldModel field = question.fields[fieldIndex];
-    
+
                     subQuestion.add(
                       Padding(
                         padding: const EdgeInsets.only(bottom: 16.0),
@@ -117,7 +116,8 @@ class MmseView extends GetView<MmseController> {
                                 Flexible(
                                   flex: 4,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         field.fieldLabel,
@@ -183,7 +183,7 @@ class MmseView extends GetView<MmseController> {
                       ),
                     );
                   }
-    
+
                   return Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,

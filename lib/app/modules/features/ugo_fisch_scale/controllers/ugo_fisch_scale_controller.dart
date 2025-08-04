@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
-import 'package:open_file_plus/open_file_plus.dart';
+import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/values/strings.dart';
 import 'package:physio_calc/app/data/models/ugo_fisch_scale/ugo_fisch_scale_field_model.dart';
-
-import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;
 
 class UgoFischScaleController extends GetxController {
   final formKey = GlobalKey<FormBuilderState>();
@@ -313,11 +312,11 @@ class UgoFischScaleController extends GetxController {
     final file = File('${directory.path}/Result $ugoFischScale.pdf');
 
     await file.writeAsBytes(bytes);
-    await OpenFile.open(file.path);
+    await OpenFilex.open(file.path);
     Get.back();
   }
 
-  convtoImage(String name) async {
+  Future<void> convtoImage(String name) async {
     pw.MemoryImage(
       (await rootBundle.load('assets/images/physio_calc.png'))
           .buffer

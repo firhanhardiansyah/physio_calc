@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
 import 'package:get/get.dart';
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/utils/helpers/popup_helper.dart';
@@ -14,7 +13,7 @@ import 'package:physio_calc/app/global_widgets/form_builder_custom.dart';
 import '../controllers/womac_controller.dart';
 
 class WomacView extends GetView<WomacController> {
-  const WomacView({Key? key}) : super(key: key);
+  const WomacView({super.key});
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -52,7 +51,7 @@ class WomacView extends GetView<WomacController> {
                 );
                 return;
               }
-    
+
               Get.dialog(AlertDialog(
                 title: Text(
                   'User Information',
@@ -97,7 +96,7 @@ class WomacView extends GetView<WomacController> {
                 itemCount: controller.questions.length,
                 itemBuilder: (context, index) {
                   final question = controller.questions[index];
-    
+
                   return Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,10 +107,11 @@ class WomacView extends GetView<WomacController> {
                       ),
                       const SizedBox(height: 8.0),
                       Column(
-                          children: question.fields.asMap().entries.map((entry) {
+                          children:
+                              question.fields.asMap().entries.map((entry) {
                         int subIndex = entry.key;
                         FormFieldModel field = entry.value;
-    
+
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 16.0),
                           child: Column(
@@ -119,7 +119,8 @@ class WomacView extends GetView<WomacController> {
                               Flex(
                                 direction: Axis.horizontal,
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Flexible(
                                     flex: 3,
@@ -132,7 +133,8 @@ class WomacView extends GetView<WomacController> {
                                           style: TextsTheme.textSm,
                                         ),
                                         if (field.fieldImageAssets != null) ...{
-                                          Image.asset('${field.fieldImageAssets}')
+                                          Image.asset(
+                                              '${field.fieldImageAssets}')
                                         }
                                       ],
                                     ),

@@ -18,7 +18,7 @@ class FormFieldModel with _$FormFieldModel {
   factory FormFieldModel.fromJson(Map<String, dynamic> json) =>
       _$FormFieldModelFromJson(json);
 
-  static List<FormFieldModel> listFromJson(list) =>
+  static List<FormFieldModel> listFromJson(dynamic list) =>
       List<FormFieldModel>.from(list.map((x) => FormFieldModel.fromJson(x)));
 }
 
@@ -36,7 +36,6 @@ class FormFieldScoreModel with _$FormFieldScoreModel {
 
 @freezed
 class QuestionModel with _$QuestionModel {
-
   factory QuestionModel({
     required int id,
     required String questionName,
@@ -44,8 +43,9 @@ class QuestionModel with _$QuestionModel {
     required List<FormFieldModel> fields,
   }) = _QuestionModel;
 
-  factory QuestionModel.fromJson(Map<String, dynamic> json) => _$QuestionModelFromJson(json);
-  
-  static List<QuestionModel> listFromJson(list) =>
+  factory QuestionModel.fromJson(Map<String, dynamic> json) =>
+      _$QuestionModelFromJson(json);
+
+  static List<QuestionModel> listFromJson(dynamic list) =>
       List<QuestionModel>.from(list.map((x) => QuestionModel.fromJson(x)));
 }

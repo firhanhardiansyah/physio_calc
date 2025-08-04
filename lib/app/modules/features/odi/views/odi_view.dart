@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-
 import 'package:get/get.dart';
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/utils/helpers/popup_helper.dart';
@@ -13,7 +12,7 @@ import 'package:physio_calc/app/global_widgets/form_builder_custom.dart';
 import '../controllers/odi_controller.dart';
 
 class OdiView extends GetView<OdiController> {
-  const OdiView({Key? key}) : super(key: key);
+  const OdiView({super.key});
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -51,7 +50,7 @@ class OdiView extends GetView<OdiController> {
                 );
                 return;
               }
-    
+
               Get.dialog(AlertDialog(
                 title: Text(
                   'User Information',
@@ -96,7 +95,7 @@ class OdiView extends GetView<OdiController> {
                 itemCount: controller.formFieldsModel.length,
                 itemBuilder: (context, index) {
                   final formField = controller.formFieldsModel[index];
-    
+
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: Column(

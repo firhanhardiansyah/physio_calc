@@ -5,27 +5,16 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutController extends GetxController {
-
   final appName = ''.obs;
   final packageName = ''.obs;
   final version = ''.obs;
   final buildNumber = ''.obs;
 
   @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
   void onReady() {
     super.onReady();
 
     versionInfo();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
   }
 
   void versionInfo() async {

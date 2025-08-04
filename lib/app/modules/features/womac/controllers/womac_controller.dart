@@ -1,21 +1,18 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
+import 'package:open_filex/open_filex.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
 import 'package:physio_calc/app/core/themes/texts_theme.dart';
 import 'package:physio_calc/app/core/utils/abstracts/questionnaire_controller.dart';
 import 'package:physio_calc/app/core/values/questions/womac_question.dart';
 import 'package:physio_calc/app/core/values/strings.dart';
 import 'package:physio_calc/app/data/models/form_field_model/form_field_model.dart';
-
-import 'package:flutter/services.dart';
-
-import 'package:open_file_plus/open_file_plus.dart';
-import 'package:path_provider/path_provider.dart';
-
-import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;
 
 class WomacController extends GetxController
     implements QuestionnairesController {
@@ -154,7 +151,6 @@ class WomacController extends GetxController
               ),
             ),
             pw.SizedBox(height: 18.0),
-
             pw.Container(
               decoration: pw.BoxDecoration(border: pw.Border.all()),
               padding: const pw.EdgeInsets.all(8.0),
@@ -191,12 +187,9 @@ class WomacController extends GetxController
                     )
                   ]),
             ),
-
             pw.SizedBox(height: 20.0),
-
             pw.Container(
                 width: double.infinity, height: 1, color: PdfColors.black),
-
             pw.Table(
                 columnWidths: {
                   0: const pw.FlexColumnWidth(4.0),
@@ -245,7 +238,7 @@ class WomacController extends GetxController
                                                     child: pw.Text(
                                                         field.fieldLabel)),
                                               ]);
-                                            }).toList()
+                                            })
                                           ]),
                                     ])
                               ]),
@@ -256,11 +249,9 @@ class WomacController extends GetxController
                                     pw.Text(question.questionPoint.toString())),
                           ),
                         ]);
-                  }).toList()
+                  })
                 ]),
-
             pw.SizedBox(height: 20.0),
-
             pw.Table(tableWidth: pw.TableWidth.min, columnWidths: {
               0: const pw.FixedColumnWidth(120),
               1: const pw.FixedColumnWidth(12),
@@ -290,7 +281,7 @@ class WomacController extends GetxController
     final file = File('${directory.path}/Result $womac.pdf');
 
     await file.writeAsBytes(bytes);
-    await OpenFile.open(file.path);
+    await OpenFilex.open(file.path);
     Get.back();
   }
 
